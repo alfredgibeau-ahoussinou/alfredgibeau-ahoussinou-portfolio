@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <main>
       <section className="page-section-xl pt-36">
-        <div className="page-container max-w-4xl">
+        <div className="page-container-narrow">
           <ContactContent />
         </div>
       </section>

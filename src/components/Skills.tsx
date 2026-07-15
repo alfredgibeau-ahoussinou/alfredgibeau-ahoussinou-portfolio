@@ -17,26 +17,24 @@ export function Skills() {
           subtitle="Une stack moderne au service de produits performants, scalables et élégants."
         />
 
-        <dl className="mt-24 space-y-0">
+        <dl className="mt-20 sm:mt-24">
           {skillGroups.map((group, gi) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{
-                duration: 0.7,
-                delay: gi * 0.06,
+                duration: 0.65,
+                delay: gi * 0.05,
                 ease: EASE_LUXURY,
               }}
-              className="grid gap-5 border-t border-border-subtle py-12 first:border-t-0 first:pt-0 lg:grid-cols-[220px_1fr] lg:gap-16"
+              className="grid gap-4 border-t border-border-subtle py-10 first:border-t-0 first:pt-0 sm:py-12 lg:grid-cols-[200px_1fr] lg:gap-12 lg:py-14"
             >
               <dt className="text-label">{group.category}</dt>
               <dd>
-                <ScrollLine className="mb-6 max-w-[40px] lg:hidden" />
-                <p className="text-[0.9375rem] leading-[1.9] text-muted">
-                  {group.skills.join(" · ")}
-                </p>
+                <ScrollLine className="mb-5 max-w-[40px] lg:hidden" />
+                <p className="text-body">{group.skills.join(" · ")}</p>
               </dd>
             </motion.div>
           ))}

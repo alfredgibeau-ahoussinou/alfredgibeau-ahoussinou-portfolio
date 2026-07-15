@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { getFeaturedProjects } from "@/data/projects";
 import { EASE_LUXURY } from "@/lib/motion";
@@ -21,16 +20,16 @@ export function FeaturedProjects() {
           subtitle="Trois réalisations — ingénierie web, mobile et intelligence artificielle au service du produit."
         />
 
-        <div className="mt-32 lg:mt-40">
+        <div className="mt-24 sm:mt-32 lg:mt-40">
           <ProjectShowcase projects={featured} showLinks={false} />
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: EASE_LUXURY }}
-          className="mt-36 flex justify-center lg:mt-52"
+          transition={{ duration: 0.65, ease: EASE_LUXURY }}
+          className="mt-28 flex justify-center sm:mt-36 lg:mt-44"
         >
           <LinkPremium href="/projets">Voir tous les projets</LinkPremium>
         </motion.div>

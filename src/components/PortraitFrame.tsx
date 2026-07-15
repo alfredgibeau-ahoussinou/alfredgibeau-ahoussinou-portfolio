@@ -25,20 +25,20 @@ export function PortraitFrame({
         alt="Alfred Ahoussinou"
         fill
         priority={priority}
-        className="portrait-image object-cover object-[center_18%]"
+        className="portrait-image object-cover object-[center_16%]"
         sizes={sizes}
       />
       <div className="portrait-vignette absolute inset-0" aria-hidden="true" />
       <div
-        className="absolute inset-0 bg-gradient-to-t from-background via-background/45 to-background/10"
+        className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/8"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_28%_12%,rgb(201_173_120_/_0.08),transparent_42%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_28%_12%,rgb(201_173_120_/_0.06),transparent_42%)]"
         aria-hidden="true"
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-background via-background/80 to-transparent"
+        className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-background via-background/75 to-transparent"
         aria-hidden="true"
       />
     </div>

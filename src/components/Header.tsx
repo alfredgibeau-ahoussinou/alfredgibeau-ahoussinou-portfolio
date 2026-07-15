@@ -20,27 +20,30 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const lenis = useLenis();
 
-  useLenis((lenis) => {
-    setScrolled(lenis.scroll > 32);
+  useLenis((instance) => {
+    setScrolled(instance.scroll > 32);
   });
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      lenis?.stop();
+      document.body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+
     return () => {
+      lenis?.start();
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, lenis]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -48,46 +51,50 @@ export function Header() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
-        scrolled ? "glass-header py-0" : "bg-transparent"
+        scrolled ? "glass-header" : "bg-transparent"
       }`}
     >
-      <nav className="page-container flex items-center justify-between py-7 lg:py-9">
-        <Magnetic strength={0.12}>
+      <nav
+        className={`page-container flex items-center justify-between transition-[padding] duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+          scrolled ? "py-5 lg:py-6" : "py-7 lg:py-9"
+        }`}
+      >
+        <Magnetic strength={0.08}>
           <Link
             href="/"
             className="group flex flex-col gap-1 transition-opacity duration-500 hover:opacity-70"
           >
-            <span className="font-serif text-[1.125rem] tracking-[-0.025em] text-foreground lg:text-[1.25rem]">
+            <span className="font-serif text-[1.125rem] leading-none tracking-[-0.025em] text-foreground lg:text-[1.25rem]">
               {profile.name}
             </span>
-            <span className="font-mono text-[0.46875rem] uppercase tracking-[0.32em] text-muted/45">
+            <span className="font-mono text-[0.5rem] uppercase tracking-[0.28em] text-muted/55">
               Full-Stack & IA
             </span>
           </Link>
         </Magnetic>
 
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-0.5 lg:flex">
           {links.map((link) => {
             const active = isActive(link.href);
             return (
               <li key={link.href} className="relative">
-                <Magnetic strength={0.1}>
+                <Magnetic strength={0.06}>
                   <Link
                     href={link.href}
-                    className={`link-center-underline relative block px-6 py-2.5 font-mono text-[0.625rem] uppercase tracking-[0.2em] transition-colors duration-500 ${
+                    className={`link-center-underline relative block px-5 py-2.5 font-mono text-[0.625rem] uppercase tracking-[0.2em] transition-colors duration-500 ${
                       active
                         ? "text-foreground"
-                        : "text-muted/65 hover:text-foreground"
+                        : "text-muted/70 hover:text-foreground"
                     }`}
                   >
                     {active && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute inset-x-5 -bottom-0.5 h-px bg-accent/60"
+                        className="absolute inset-x-4 bottom-0 h-px bg-accent/55"
                         transition={{
                           type: "spring",
                           stiffness: 380,
-                          damping: 30,
+                          damping: 32,
                         }}
                       />
                     )}
@@ -103,11 +110,11 @@ export function Header() {
           type="button"
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
-          className="relative z-[60] flex h-10 w-10 items-center justify-center lg:hidden"
+          className="relative z-[60] flex h-11 w-11 items-center justify-center lg:hidden"
           onClick={() => setOpen(!open)}
         >
           <span className="sr-only">{open ? "Fermer" : "Menu"}</span>
-          <div className="relative h-3 w-5">
+          <div className="relative flex h-3 w-5 flex-col justify-between">
             <motion.span
               animate={
                 open
@@ -115,13 +122,12 @@ export function Header() {
                   : { rotate: 0, y: 0, width: 20 }
               }
               transition={{ duration: 0.45, ease: EASE_LUXURY }}
-              className="absolute left-0 top-0 h-px origin-center bg-foreground"
-              style={{ width: 20 }}
+              className="absolute left-0 top-0 h-px w-5 origin-center bg-foreground"
             />
             <motion.span
               animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.3, ease: EASE_LUXURY }}
-              className="absolute left-0 top-[5px] h-px w-3 origin-center bg-foreground/60"
+              className="absolute left-0 top-1/2 h-px w-5 -translate-y-1/2 origin-center bg-foreground/55"
             />
             <motion.span
               animate={
@@ -130,8 +136,7 @@ export function Header() {
                   : { rotate: 0, y: 0, width: 20 }
               }
               transition={{ duration: 0.45, ease: EASE_LUXURY }}
-              className="absolute bottom-0 left-0 h-px origin-center bg-foreground"
-              style={{ width: 20 }}
+              className="absolute bottom-0 left-0 h-px w-5 origin-center bg-foreground"
             />
           </div>
         </button>
@@ -143,36 +148,37 @@ export function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: EASE_LUXURY }}
-            className="fixed inset-0 z-[55] bg-background/97 backdrop-blur-2xl lg:hidden"
+            transition={{ duration: 0.45, ease: EASE_LUXURY }}
+            className="fixed inset-0 z-[55] bg-background/98 backdrop-blur-2xl lg:hidden"
+            data-lenis-prevent
           >
             <motion.nav
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 16 }}
-              transition={{ duration: 0.55, delay: 0.05, ease: EASE_LUXURY }}
-              className="flex h-full flex-col justify-center px-8"
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.5, delay: 0.04, ease: EASE_LUXURY }}
+              className="page-container flex h-full flex-col justify-center"
             >
-              <ul className="flex flex-col gap-10">
+              <ul className="flex flex-col gap-8">
                 {links.map((link, i) => (
                   <motion.li
                     key={link.href}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + i * 0.07, ease: EASE_LUXURY }}
+                    transition={{ delay: 0.06 + i * 0.06, ease: EASE_LUXURY }}
                   >
                     <Link
                       href={link.href}
-                      className={`group flex items-baseline gap-6 transition-colors ${
+                      className={`group flex items-baseline gap-5 transition-colors ${
                         isActive(link.href)
                           ? "text-foreground"
-                          : "text-muted/60 hover:text-foreground"
+                          : "text-muted/65 hover:text-foreground"
                       }`}
                     >
-                      <span className="font-mono text-[0.5625rem] tracking-[0.2em] text-muted/30">
+                      <span className="font-mono text-[0.5625rem] tracking-[0.2em] text-muted/35">
                         0{i + 1}
                       </span>
-                      <span className="font-serif text-[clamp(2.25rem,8vw,3.5rem)] tracking-[-0.03em]">
+                      <span className="font-serif text-[clamp(2rem,7.5vw,3.25rem)] tracking-[-0.03em]">
                         {link.label}
                       </span>
                     </Link>
@@ -183,13 +189,13 @@ export function Header() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.45, ease: EASE_LUXURY }}
-                className="mt-20 border-t border-border-subtle pt-10"
+                transition={{ delay: 0.38, ease: EASE_LUXURY }}
+                className="mt-16 border-t border-border-subtle pt-10"
               >
                 <p className="text-label">Email</p>
                 <a
                   href={`mailto:${profile.email}`}
-                  className="mt-3 block font-serif text-lg tracking-[-0.01em] text-foreground/80 transition-colors hover:text-accent"
+                  className="link-underline mt-3 block break-all font-serif text-lg tracking-[-0.01em] text-foreground/85 transition-colors hover:text-accent sm:break-normal"
                 >
                   {profile.email}
                 </a>

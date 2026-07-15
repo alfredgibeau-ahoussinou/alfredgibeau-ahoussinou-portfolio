@@ -24,8 +24,9 @@ export function LinkPremium({
       <span className="link-center-underline">{children}</span>
       {showArrow && (
         <ArrowRight
-          size={16}
-          className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-1.5"
+          size={15}
+          strokeWidth={1.5}
+          className="transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:translate-x-1"
           aria-hidden="true"
         />
       )}
@@ -34,7 +35,7 @@ export function LinkPremium({
 
   if (external) {
     return (
-      <Magnetic strength={0.2}>
+      <Magnetic strength={0.08}>
         <a href={href} target="_blank" rel="noopener noreferrer">
           {content}
         </a>
@@ -43,7 +44,7 @@ export function LinkPremium({
   }
 
   return (
-    <Magnetic strength={0.2}>
+    <Magnetic strength={0.08}>
       <Link href={href}>{content}</Link>
     </Magnetic>
   );

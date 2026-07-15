@@ -37,21 +37,21 @@ function ShowcaseItem({
   const imageY = useTransform(
     scrollYProgress,
     [0, 1],
-    reducedMotion ? ["0%", "0%"] : ["5%", "-5%"],
+    reducedMotion ? ["0%", "0%"] : ["4%", "-4%"],
   );
 
   return (
     <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 48 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.9, ease: EASE_LUXURY }}
-      className="showcase-item relative"
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.85, ease: EASE_LUXURY }}
+      className="showcase-item relative pt-8 sm:pt-12"
     >
       <span
         className={`section-number-outline absolute top-0 ${
-          reversed ? "right-0 lg:right-8" : "left-0 lg:left-8"
+          reversed ? "right-0 lg:right-4" : "left-0 lg:left-4"
         } -z-10 select-none`}
         aria-hidden="true"
       >
@@ -59,7 +59,7 @@ function ShowcaseItem({
       </span>
 
       <div
-        className={`grid items-center gap-16 lg:grid-cols-2 lg:gap-24 xl:gap-36 ${
+        className={`grid items-center gap-12 sm:gap-16 lg:grid-cols-2 lg:gap-20 xl:gap-28 ${
           reversed ? "lg:[direction:rtl]" : ""
         }`}
       >
@@ -81,28 +81,24 @@ function ShowcaseItem({
         <div className={`${reversed ? "lg:[direction:ltr]" : ""}`}>
           <div className="flex items-center gap-4">
             <span className="section-number">{num}</span>
-            <ScrollLine className="hidden max-w-[60px] flex-1 sm:block" />
+            <ScrollLine className="hidden max-w-[56px] flex-1 sm:block" />
           </div>
 
-          <Link href={`/projets/${project.slug}`} className="group mt-8 block">
-            <h3 className="text-display text-[clamp(2.125rem,5.5vw,4.25rem)] text-foreground transition-opacity duration-500 group-hover:opacity-75">
+          <Link href={`/projets/${project.slug}`} className="group mt-6 block sm:mt-8">
+            <h3 className="text-display text-[clamp(2rem,5vw,4rem)] text-foreground transition-opacity duration-500 group-hover:opacity-80">
               {project.title}
             </h3>
-            <div className="showcase-hover-line mt-6 h-px w-full max-w-xs bg-accent/50" />
-            <p className="showcase-desc text-base leading-[1.85] text-muted">
-              {project.description}
-            </p>
-            <p className="mt-6 line-clamp-2 text-sm leading-[1.8] text-muted/80 lg:hidden">
-              {project.description}
-            </p>
+            <div className="showcase-hover-line mt-5 h-px w-full max-w-xs bg-accent/45" />
+            <p className="showcase-desc text-body">{project.description}</p>
+            <p className="text-body mt-5 line-clamp-3 lg:hidden">{project.description}</p>
           </Link>
 
-          <p className="mt-6 hidden font-mono text-[0.625rem] tracking-wider text-muted/50 lg:block">
+          <p className="mt-5 hidden font-mono text-[0.625rem] tracking-[0.12em] text-muted/55 lg:block">
             {project.tech.slice(0, 4).join(" · ")}
           </p>
 
-          {showLinks && (
-            <div className="mt-10 flex flex-wrap items-center gap-6">
+          {showLinks ? (
+            <div className="mt-8 flex flex-wrap items-center gap-5 sm:mt-10 sm:gap-6">
               {project.live ? (
                 <a
                   href={project.live}
@@ -111,10 +107,10 @@ function ShowcaseItem({
                   className="btn-minimal"
                 >
                   Voir le site
-                  <ArrowUpRight size={13} />
+                  <ArrowUpRight size={14} strokeWidth={1.5} />
                 </a>
               ) : (
-                <span className="text-label text-muted/60">
+                <span className="text-label text-muted/65">
                   Pas de déploiement public
                 </span>
               )}
@@ -122,21 +118,21 @@ function ShowcaseItem({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-foreground"
+                className="btn-link-action link-underline"
               >
                 Code
-                <ArrowUpRight size={13} />
+                <ArrowUpRight size={14} strokeWidth={1.5} />
               </a>
             </div>
+          ) : (
+            <Link
+              href={`/projets/${project.slug}`}
+              className="btn-link-action link-underline mt-8 inline-flex sm:mt-10"
+            >
+              Détails du projet
+              <ArrowUpRight size={14} strokeWidth={1.5} />
+            </Link>
           )}
-
-          <Link
-            href={`/projets/${project.slug}`}
-            className="link-underline mt-8 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
-          >
-            Détails du projet
-            <ArrowUpRight size={14} />
-          </Link>
         </div>
       </div>
     </motion.article>
@@ -148,7 +144,7 @@ export function ProjectShowcase({
   showLinks = true,
 }: ProjectShowcaseProps) {
   return (
-    <div className="space-y-36 lg:space-y-52">
+    <div className="space-y-32 lg:space-y-44">
       {projects.map((project, index) => (
         <ShowcaseItem
           key={project.id}

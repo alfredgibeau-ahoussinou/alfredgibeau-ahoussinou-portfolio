@@ -3,7 +3,7 @@
 :root {
   --background: #040403;
   --foreground: #f7f3eb;
-  --muted: #8a8276;
+  --muted: #918a7e;
   --accent: #c9ad78;
   --accent-soft: rgb(201 173 120 / 0.08);
   --border: rgb(247 243 235 / 0.08);
@@ -12,6 +12,8 @@
   --surface-elevated: #11100f;
   --ease-luxury: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-luxury: 550ms;
+  --duration-slow: 700ms;
 }
 
 @theme inline {
@@ -31,6 +33,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
 }
 
 html.lenis,
@@ -134,7 +140,7 @@ body {
 .text-label-accent {
   font-family: var(--font-mono);
   font-size: 0.625rem;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -148,30 +154,31 @@ body {
 
 .text-display-massive {
   font-family: var(--font-serif);
-  font-size: clamp(3.75rem, 11vw, 12rem);
+  font-size: clamp(2.875rem, 9.5vw, 12rem);
   letter-spacing: -0.035em;
-  line-height: 0.86;
+  line-height: 0.88;
   text-wrap: balance;
 }
 
 .text-body {
-  line-height: 1.8;
-  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: rgb(145 138 126 / 0.9);
 }
 
 .section-number {
   font-family: var(--font-mono);
   font-size: 0.5625rem;
   letter-spacing: 0.18em;
-  color: rgb(248 244 236 / 0.22);
+  color: rgb(248 244 236 / 0.28);
 }
 
 .section-number-outline {
   font-family: var(--font-serif);
-  font-size: clamp(5rem, 14vw, 10rem);
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
   line-height: 0.85;
   letter-spacing: -0.04em;
-  -webkit-text-stroke: 1px rgb(248 244 236 / 0.07);
+  -webkit-text-stroke: 1px rgb(248 244 236 / 0.06);
   color: transparent;
   user-select: none;
   pointer-events: none;
@@ -193,7 +200,7 @@ body {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 550ms var(--ease-luxury);
+  transition: transform var(--duration-luxury) var(--ease-luxury);
 }
 
 .link-center-underline:hover::after,
@@ -216,7 +223,7 @@ body {
   background: currentColor;
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 550ms var(--ease-luxury);
+  transition: transform var(--duration-luxury) var(--ease-luxury);
 }
 
 .link-underline:hover::after {
@@ -232,7 +239,7 @@ body {
   text-transform: uppercase;
   color: var(--foreground);
   text-decoration: none;
-  transition: color 500ms ease;
+  transition: color var(--duration-luxury) var(--ease-luxury);
 }
 
 .cta-premium:hover {
@@ -259,13 +266,13 @@ body {
 .page-section {
   position: relative;
   z-index: 1;
-  padding-block: clamp(7rem, 15vw, 13rem);
+  padding-block: clamp(6rem, 14vw, 12rem);
 }
 
 .page-section-xl {
   position: relative;
   z-index: 1;
-  padding-block: clamp(9rem, 19vw, 18rem);
+  padding-block: clamp(7rem, 16vw, 14rem);
 }
 
 .section-fade-top {
@@ -374,11 +381,13 @@ body {
 /* Project showcase */
 .showcase-item {
   position: relative;
-  transition: transform 800ms var(--ease-luxury);
+  transition: transform var(--duration-slow) var(--ease-luxury);
 }
 
-.showcase-item:hover {
-  transform: scale(1.008);
+@media (hover: hover) and (pointer: fine) {
+  .showcase-item:hover {
+    transform: scale(1.004);
+  }
 }
 
 .showcase-image-wrap {
@@ -391,23 +400,27 @@ body {
     rgb(12 11 10 / 0.6) 100%
   );
   transition:
-    border-color 600ms ease,
-    box-shadow 600ms ease;
+    border-color var(--duration-slow) var(--ease-luxury),
+    box-shadow var(--duration-slow) var(--ease-luxury);
 }
 
-.showcase-item:hover .showcase-image-wrap {
-  border-color: rgb(201 173 120 / 0.15);
-  box-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.6);
+@media (hover: hover) and (pointer: fine) {
+  .showcase-item:hover .showcase-image-wrap {
+    border-color: rgb(201 173 120 / 0.15);
+    box-shadow: 0 32px 64px -32px rgb(0 0 0 / 0.55);
+  }
 }
 
 .showcase-hover-line {
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 700ms var(--ease-luxury);
+  transition: transform var(--duration-slow) var(--ease-luxury);
 }
 
-.showcase-item:hover .showcase-hover-line {
-  transform: scaleX(1);
+@media (hover: hover) and (pointer: fine) {
+  .showcase-item:hover .showcase-hover-line {
+    transform: scaleX(1);
+  }
 }
 
 .showcase-desc {
@@ -415,15 +428,17 @@ body {
   opacity: 0;
   overflow: hidden;
   transition:
-    max-height 700ms var(--ease-luxury),
-    opacity 500ms ease,
-    margin 700ms var(--ease-luxury);
+    max-height var(--duration-slow) var(--ease-luxury),
+    opacity 500ms var(--ease-luxury),
+    margin var(--duration-slow) var(--ease-luxury);
 }
 
-.showcase-item:hover .showcase-desc {
-  max-height: 8rem;
-  opacity: 1;
-  margin-top: 1rem;
+@media (hover: hover) and (pointer: fine) {
+  .showcase-item:hover .showcase-desc {
+    max-height: 10rem;
+    opacity: 1;
+    margin-top: 1rem;
+  }
 }
 
 /* Tech pills */
@@ -433,15 +448,17 @@ body {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   letter-spacing: 0.04em;
-  color: rgb(248 244 236 / 0.75);
-  transition: border-color 400ms ease;
+  color: rgb(248 244 236 / 0.78);
+  transition: border-color var(--duration-luxury) var(--ease-luxury);
 }
 
-.tech-pill:hover {
-  border-color: rgb(201 173 120 / 0.2);
+@media (hover: hover) and (pointer: fine) {
+  .tech-pill:hover {
+    border-color: rgb(201 173 120 / 0.2);
+  }
 }
 
-/* Magnetic btn ghost — minimal */
+/* Buttons */
 .btn-minimal {
   display: inline-flex;
   align-items: center;
@@ -454,11 +471,30 @@ body {
   color: var(--foreground);
   text-decoration: none;
   transition:
-    border-color 500ms ease,
-    color 500ms ease;
+    border-color var(--duration-luxury) var(--ease-luxury),
+    color var(--duration-luxury) var(--ease-luxury);
 }
 
-.btn-minimal:hover {
-  border-color: rgb(201 173 120 / 0.35);
-  color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .btn-minimal:hover {
+    border-color: rgb(201 173 120 / 0.35);
+    color: var(--accent);
+  }
+}
+
+.btn-link-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color var(--duration-luxury) var(--ease-luxury);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-link-action:hover {
+    color: var(--foreground);
+  }
 }

@@ -10,9 +10,9 @@ type ProjectLogoProps = {
 };
 
 const paddingClasses = {
-  sm: "inset-[20%]",
+  sm: "inset-[22%]",
   md: "inset-[18%]",
-  lg: "inset-[16%]",
+  lg: "inset-[15%]",
 } as const;
 
 export function ProjectLogo({

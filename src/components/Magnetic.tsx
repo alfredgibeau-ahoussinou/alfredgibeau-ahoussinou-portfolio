@@ -12,13 +12,13 @@ type MagneticProps = {
 export function Magnetic({
   children,
   className = "",
-  strength = 0.28,
+  strength = 0.12,
 }: MagneticProps) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 280, damping: 22, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 280, damping: 22, mass: 0.4 });
+  const springX = useSpring(x, { stiffness: 260, damping: 24, mass: 0.45 });
+  const springY = useSpring(y, { stiffness: 260, damping: 24, mass: 0.45 });
 
   const handleMove = (e: React.MouseEvent) => {
     const el = ref.current;

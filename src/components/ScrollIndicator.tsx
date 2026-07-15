@@ -12,22 +12,22 @@ export function ScrollIndicator() {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 1.2, duration: 0.8, ease: EASE_LUXURY }}
-      className="absolute bottom-10 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-4 lg:flex"
+      transition={{ delay: 1, duration: 0.7, ease: EASE_LUXURY }}
+      className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 lg:flex"
       aria-hidden="true"
     >
-      <span className="text-label rotate-90 origin-center whitespace-nowrap">
+      <span className="text-label origin-center rotate-90 whitespace-nowrap">
         Scroll
       </span>
-      <div className="relative h-16 w-px overflow-hidden bg-border-subtle">
+      <div className="relative h-14 w-px overflow-hidden bg-border-subtle">
         <motion.div
           animate={{ y: ["-100%", "100%"] }}
           transition={{
-            duration: 1.8,
+            duration: 2,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: EASE_LUXURY,
           }}
-          className="absolute inset-x-0 h-1/2 bg-accent/70"
+          className="absolute inset-x-0 h-1/2 bg-accent/60"
         />
       </div>
     </motion.div>

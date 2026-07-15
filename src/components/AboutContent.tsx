@@ -60,19 +60,19 @@ export function AboutContent() {
         subtitle="Développeur full-stack spécialisé IA, basé à Paris — je conçois des produits web d'exception."
       />
 
-      <div className="mt-24 space-y-12">
+      <div className="mt-20 space-y-10 sm:mt-24 sm:space-y-12">
         {profile.about.map((paragraph, i) => (
           <motion.p
             key={paragraph.slice(0, 24)}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{
-              duration: 0.75,
-              delay: i * 0.08,
+              duration: 0.7,
+              delay: i * 0.07,
               ease: EASE_LUXURY,
             }}
-            className="text-[0.9375rem] leading-[1.95] text-muted/85"
+            className="text-body"
           >
             <AboutParagraph paragraph={paragraph} index={i} />
           </motion.p>
@@ -80,16 +80,16 @@ export function AboutContent() {
       </div>
 
       <motion.dl
-        initial={{ opacity: 0, y: 24 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.75, delay: 0.1, ease: EASE_LUXURY }}
-        className="mt-28 grid grid-cols-2 gap-x-12 gap-y-16 border-t border-border-subtle pt-24 sm:grid-cols-4"
+        transition={{ duration: 0.7, delay: 0.08, ease: EASE_LUXURY }}
+        className="mt-24 grid grid-cols-2 gap-x-8 gap-y-12 border-t border-border-subtle pt-20 sm:grid-cols-4 sm:gap-x-12 sm:gap-y-16 sm:pt-24"
       >
         {stats.map((stat) => (
           <div key={stat.label}>
             <dt className="text-label">{stat.label}</dt>
-            <dd className="mt-6 font-serif text-3xl tracking-[-0.02em] text-foreground sm:text-4xl">
+            <dd className="mt-4 font-serif text-2xl tracking-[-0.02em] text-foreground sm:mt-6 sm:text-3xl lg:text-4xl">
               {stat.value}
             </dd>
           </div>

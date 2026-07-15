@@ -22,7 +22,7 @@ export function AboutPortrait() {
     <motion.div
       ref={ref}
       style={{ y }}
-      className="lg:sticky lg:top-32 lg:self-start"
+      className="lg:sticky lg:top-36 lg:self-start"
     >
       <PortraitFrame
         priority

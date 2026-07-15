@@ -14,7 +14,7 @@ export default function AboutPage() {
     <main>
       <section className="page-section-xl pt-36">
         <div className="page-container">
-          <div className="grid gap-28 lg:grid-cols-[0.9fr_1.1fr] lg:gap-40">
+          <div className="grid gap-20 sm:gap-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-32 xl:gap-40">
             <AboutPortrait />
             <AboutContent />
           </div>

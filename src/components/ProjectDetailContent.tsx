@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import type { Project } from "@/data/projects";
 import { getProjectImageUrl } from "@/lib/images";
@@ -21,6 +21,7 @@ export function ProjectDetailContent({
   projectIndex,
 }: ProjectDetailContentProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
   const imageUrl = getProjectImageUrl(project);
   const num = String(projectIndex).padStart(2, "0");
 
@@ -28,36 +29,39 @@ export function ProjectDetailContent({
     target: containerRef,
     offset: ["start start", "end start"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.85]);
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? ["0%", "0%"] : ["0%", "10%"],
+  );
 
   return (
-    <section ref={containerRef} className="relative pt-32 pb-32">
+    <section ref={containerRef} className="page-section-xl pt-36">
       <div className="page-container">
         <motion.div
-          initial={{ opacity: 0, x: -12 }}
+          initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: EASE_LUXURY }}
+          transition={{ duration: 0.55, ease: EASE_LUXURY }}
         >
           <Link
             href="/projets"
-            className="link-underline inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+            className="btn-link-action link-underline inline-flex"
           >
-            <ArrowLeft size={14} />
+            <ArrowUpRight size={14} strokeWidth={1.5} className="-rotate-90" />
             Retour aux projets
           </Link>
         </motion.div>
       </div>
 
-      <div className="page-container relative mt-20">
+      <div className="page-container relative mt-16 sm:mt-20">
         <span
-          className="section-number-outline absolute -top-8 right-0 hidden lg:block"
+          className="section-number-outline absolute -top-4 right-0 hidden select-none lg:block"
           aria-hidden="true"
         >
           {num}
         </span>
 
-        <div className="grid gap-20 lg:grid-cols-[1fr_1.05fr] lg:gap-24">
+        <div className="grid gap-16 lg:grid-cols-[1fr_1.05fr] lg:gap-20 xl:gap-24">
           <motion.div
             style={{ y: imageY }}
             className="showcase-image-wrap lg:sticky lg:top-36 lg:self-start"
@@ -72,44 +76,39 @@ export function ProjectDetailContent({
             />
           </motion.div>
 
-          <div className="lg:pt-8">
-            <div className="sticky top-32 z-10 pb-8 lg:static lg:top-auto">
-              <div className="flex items-center gap-4">
-                <span className="section-number">{num}</span>
-                <span className="text-label-accent">Projet</span>
-              </div>
-
-              <motion.div style={{ opacity: titleOpacity }}>
-                <TextReveal
-                  as="h1"
-                  text={project.title}
-                  className="text-display mt-8 text-[clamp(2.75rem,6vw,5rem)] text-foreground"
-                  delay={0.1}
-                />
-              </motion.div>
-
-              <ScrollLine className="mt-10 max-w-[180px]" />
+          <div>
+            <div className="flex items-center gap-4">
+              <span className="section-number">{num}</span>
+              <ScrollLine className="max-w-[56px] flex-1" />
+              <span className="text-label-accent">Projet</span>
             </div>
 
+            <TextReveal
+              as="h1"
+              text={project.title}
+              className="text-display mt-6 text-[clamp(2.25rem,5.5vw,4.75rem)] text-foreground sm:mt-8"
+              delay={0.1}
+            />
+
             <motion.p
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.8, ease: EASE_LUXURY }}
-              className="mt-12 text-lg leading-[1.9] text-muted sm:text-xl"
+              transition={{ duration: 0.75, ease: EASE_LUXURY }}
+              className="text-body mt-10 max-w-2xl sm:text-lg"
             >
               {project.description}
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.1, ease: EASE_LUXURY }}
-              className="mt-20 border-t border-border-subtle pt-16"
+              transition={{ duration: 0.7, delay: 0.08, ease: EASE_LUXURY }}
+              className="mt-16 border-t border-border-subtle pt-12 sm:mt-20 sm:pt-16"
             >
               <p className="text-label">Stack technique</p>
-              <ul className="mt-8 flex flex-wrap gap-3">
+              <ul className="mt-6 flex flex-wrap gap-2.5 sm:mt-8 sm:gap-3">
                 {project.tech.map((tech) => (
                   <li key={tech} className="tech-pill">
                     {tech}
@@ -119,11 +118,11 @@ export function ProjectDetailContent({
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.15, ease: EASE_LUXURY }}
-              className="mt-16 flex flex-wrap items-center gap-5"
+              transition={{ duration: 0.6, delay: 0.12, ease: EASE_LUXURY }}
+              className="mt-12 flex flex-wrap items-center gap-5 sm:mt-16 sm:gap-6"
             >
               {project.live ? (
                 <a
@@ -133,10 +132,10 @@ export function ProjectDetailContent({
                   className="btn-minimal"
                 >
                   Voir le site
-                  <ArrowUpRight size={14} />
+                  <ArrowUpRight size={14} strokeWidth={1.5} />
                 </a>
               ) : (
-                <span className="text-label text-muted/60">
+                <span className="text-label text-muted/65">
                   Pas de déploiement public
                 </span>
               )}
@@ -144,10 +143,10 @@ export function ProjectDetailContent({
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+                className="btn-link-action link-underline"
               >
                 Code source
-                <ArrowUpRight size={14} />
+                <ArrowUpRight size={14} strokeWidth={1.5} />
               </a>
             </motion.div>
           </div>
