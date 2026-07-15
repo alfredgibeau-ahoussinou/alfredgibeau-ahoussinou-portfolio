@@ -10,31 +10,32 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ label, title, subtitle }: SectionHeadingProps) {
   return (
-    <div className="text-center">
-      <motion.span
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="inline-block rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-1 text-xs font-medium uppercase tracking-widest text-violet-300"
+    <div>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.4 }}
+        className="text-xs uppercase tracking-[0.2em] text-muted"
       >
         {label}
-      </motion.span>
+      </motion.p>
       <motion.h2
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.1 }}
-        className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.4, delay: 0.05 }}
+        className="mt-4 font-serif text-3xl tracking-tight text-foreground sm:text-4xl"
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mx-auto mt-4 max-w-2xl text-zinc-400"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-4 max-w-lg text-base leading-relaxed text-muted"
         >
           {subtitle}
         </motion.p>

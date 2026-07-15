@@ -1,80 +1,93 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
-import { GithubIcon } from "./GithubIcon";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
 import { SectionHeading } from "./SectionHeading";
 
+const links = [
+  {
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    external: false,
+  },
+  {
+    label: "GitHub",
+    value: `@${profile.username}`,
+    href: profile.github,
+    external: true,
+  },
+  {
+    label: "Localisation",
+    value: profile.location,
+    href: undefined,
+    external: false,
+  },
+];
+
 export function Contact() {
   return (
-    <section id="contact" className="relative px-6 py-24">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-
-      <div className="mx-auto max-w-6xl">
+    <section id="contact" className="border-t border-border px-6 py-32">
+      <div className="mx-auto max-w-3xl">
         <SectionHeading
           label="Contact"
           title="Travaillons ensemble"
           subtitle="Un projet en tête ? Une collaboration ? N'hésitez pas à me contacter."
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 32 }}
+        <motion.ul
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative mx-auto mt-14 max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-violet-500/10 via-[#0c0c16] to-cyan-500/10 p-8 sm:p-12"
+          transition={{ duration: 0.4 }}
+          className="mt-16 divide-y divide-border"
         >
-          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
+          {links.map((link) => (
+            <li key={link.label} className="py-6">
+              {link.href ? (
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : undefined}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className="group flex items-center justify-between transition-opacity hover:opacity-70"
+                >
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.15em] text-muted">
+                      {link.label}
+                    </p>
+                    <p className="mt-2 text-lg text-foreground">{link.value}</p>
+                  </div>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  />
+                </a>
+              ) : (
+                <div>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted">
+                    {link.label}
+                  </p>
+                  <p className="mt-2 text-lg text-foreground">{link.value}</p>
+                </div>
+              )}
+            </li>
+          ))}
+        </motion.ul>
 
-          <div className="relative space-y-6">
-            <a
-              href={`mailto:${profile.email}`}
-              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4 transition hover:border-white/10 hover:bg-white/[0.06]"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400 transition group-hover:bg-violet-500/20">
-                <Mail size={20} />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500">Email</p>
-                <p className="font-medium text-white">{profile.email}</p>
-              </div>
-            </a>
-
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4 transition hover:border-white/10 hover:bg-white/[0.06]"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 transition group-hover:bg-cyan-500/20">
-                <GithubIcon size={20} />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500">GitHub</p>
-                <p className="font-medium text-white">@{profile.username}</p>
-              </div>
-            </a>
-
-            <div className="flex items-center gap-4 rounded-2xl border border-white/5 bg-white/[0.03] p-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-fuchsia-500/10 text-fuchsia-400">
-                <MapPin size={20} />
-              </div>
-              <div>
-                <p className="text-xs text-zinc-500">Localisation</p>
-                <p className="font-medium text-white">{profile.location}</p>
-              </div>
-            </div>
-
-            <a
-              href={`mailto:${profile.email}?subject=Collaboration%20portfolio`}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 py-4 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 transition hover:shadow-violet-500/40"
-            >
-              <Send size={16} />
-              Envoyer un message
-            </a>
-          </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="mt-12"
+        >
+          <a
+            href={`mailto:${profile.email}?subject=Collaboration%20portfolio`}
+            className="link-underline text-sm text-muted transition-colors hover:text-foreground"
+          >
+            Envoyer un message →
+          </a>
         </motion.div>
       </div>
     </section>

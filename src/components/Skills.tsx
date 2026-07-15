@@ -6,45 +6,33 @@ import { SectionHeading } from "./SectionHeading";
 
 export function Skills() {
   return (
-    <section id="competences" className="relative px-6 py-24">
-      <div className="mx-auto max-w-6xl">
+    <section id="competences" className="border-t border-border px-6 py-32">
+      <div className="mx-auto max-w-3xl">
         <SectionHeading
           label="Compétences"
           title="Technologies & outils"
           subtitle="Stack moderne pour construire des applications performantes, scalables et agréables à utiliser."
         />
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2">
+        <dl className="mt-16 space-y-10">
           {skillGroups.map((group, gi) => (
             <motion.div
               key={group.category}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: gi * 0.1 }}
-              className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 backdrop-blur-sm"
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: gi * 0.06 }}
+              className="grid gap-4 border-t border-border pt-10 first:border-t-0 first:pt-0"
             >
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-violet-300">
+              <dt className="text-xs uppercase tracking-[0.15em] text-muted">
                 {group.category}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill, si) => (
-                  <motion.span
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: gi * 0.1 + si * 0.04 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="cursor-default rounded-full border border-white/5 bg-gradient-to-r from-white/5 to-white/[0.02] px-4 py-2 text-sm text-zinc-300 transition hover:border-violet-500/30 hover:text-white"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </div>
+              </dt>
+              <dd className="text-base leading-relaxed text-muted">
+                {group.skills.join(", ")}
+              </dd>
             </motion.div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );
