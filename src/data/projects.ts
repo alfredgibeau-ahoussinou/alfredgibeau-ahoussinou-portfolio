@@ -20,7 +20,7 @@ export const projects: Project[] = [
     tech: ["Next.js 16", "TypeScript", "Tailwind CSS 4", "Zustand", "Framer Motion"],
     github: "https://github.com/alfredgibeau-ahoussinou/jw-games",
     live: "https://jwgames.netlify.app",
-    image: "/projects/jw-games.png",
+    image: "/projects/jw-games-logo.png",
     featured: true,
   },
   {
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tech: ["React Native", "Mobile", "Product Design"],
     github: "https://github.com/alfredgibeau-ahoussinou/PRODAY-docs",
     live: "https://proday75.fr",
-    image: "/projects/proday.png",
+    image: "/projects/proday-logo.png",
     featured: true,
   },
   {
