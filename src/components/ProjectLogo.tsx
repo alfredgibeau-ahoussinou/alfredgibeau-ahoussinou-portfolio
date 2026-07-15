@@ -10,9 +10,9 @@ type ProjectLogoProps = {
 };
 
 const paddingClasses = {
-  sm: "p-6 sm:p-8",
-  md: "p-8 sm:p-10",
-  lg: "p-10 sm:p-14 md:p-16",
+  sm: "p-8 sm:p-10",
+  md: "p-10 sm:p-12",
+  lg: "p-12 sm:p-16 md:p-20",
 } as const;
 
 export function ProjectLogo({
@@ -27,14 +27,16 @@ export function ProjectLogo({
     <div
       className={`relative aspect-square overflow-hidden border border-border/40 bg-surface ${className}`}
     >
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        priority={priority}
-        className={`object-contain ${paddingClasses[padding]}`}
-        sizes={sizes}
-      />
+      <div className={`absolute inset-0 ${paddingClasses[padding]}`}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          className="object-contain"
+          sizes={sizes}
+        />
+      </div>
     </div>
   );
 }
