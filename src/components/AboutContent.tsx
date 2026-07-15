@@ -1,9 +1,47 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { projects } from "@/data/projects";
 import { profile } from "@/data/profile";
 import { EASE_LUXURY } from "@/lib/motion";
 import { SectionHeading } from "./SectionHeading";
+
+function ProjectLiveLink({ slug, children }: { slug: string; children: string }) {
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project?.live) {
+    return <>{children}</>;
+  }
+
+  return (
+    <a
+      href={project.live}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="link-underline text-foreground/90 transition-colors hover:text-foreground"
+    >
+      {children}
+    </a>
+  );
+}
+
+function AboutParagraph({ paragraph, index }: { paragraph: string; index: number }) {
+  if (index !== 1) {
+    return <>{paragraph}</>;
+  }
+
+  return (
+    <>
+      Mes réalisations couvrent le gaming éducatif (
+      <ProjectLiveLink slug="jw-games">JW Games</ProjectLiveLink>
+      ), le sport mobile (
+      <ProjectLiveLink slug="proday">ProDay</ProjectLiveLink>
+      ) et la réservation en ligne (
+      <ProjectLiveLink slug="xo-hair">XOhair</ProjectLiveLink>
+      ).
+    </>
+  );
+}
 
 const stats = [
   { label: "Repos publics", value: profile.stats.repos },
@@ -36,7 +74,7 @@ export function AboutContent() {
             }}
             className="text-[0.9375rem] leading-[1.95] text-muted/85"
           >
-            {paragraph}
+            <AboutParagraph paragraph={paragraph} index={i} />
           </motion.p>
         ))}
       </div>
