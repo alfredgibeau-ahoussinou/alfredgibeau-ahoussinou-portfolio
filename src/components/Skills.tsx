@@ -6,8 +6,8 @@ import { SectionHeading } from "./SectionHeading";
 
 export function Skills() {
   return (
-    <section id="competences" className="border-t border-border px-6 py-32">
-      <div className="mx-auto max-w-3xl">
+    <section className="page-section border-t border-border">
+      <div className="page-container">
         <SectionHeading
           label="Compétences"
           title="Technologies & outils"

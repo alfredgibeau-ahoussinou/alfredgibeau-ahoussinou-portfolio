@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
 import { profile } from "@/data/profile";
 
 const inter = Inter({
@@ -36,7 +38,9 @@ export default function RootLayout({
       className={`${inter.variable} ${instrumentSerif.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
