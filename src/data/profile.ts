@@ -8,12 +8,13 @@ export const profile = {
   expertise: "Full-Stack & IA",
   email: "alfred.ahoussinou@gmail.com",
   github: "https://github.com/alfredgibeau-ahoussinou",
-  bio: "Je conçois des expériences digitales où l'ingénierie rencontre l'intelligence artificielle.",
-  tagline: "Architecte de produits web et solutions IA.",
+  bio: "J'architecte des expériences digitales où l'ingénierie rencontre l'intelligence artificielle.",
+  tagline: "Full-stack & IA — produits web d'exception.",
   about: [
-    "Développeur full-stack, je transforme des concepts en produits numériques précis — applications web, APIs, systèmes temps réel et intégrations IA.",
-    "Mes réalisations couvrent le gaming éducatif (JW Games), le sport mobile (ProDay) et la réservation en ligne (XOhair).",
-    "Ouvert aux collaborations exigeantes — j'allie rigueur technique et exécution soignée.",
+    "Développeur full-stack et ingénieur IA, j'élabore des architectures web et des expériences digitales pensées pour l'impact.",
+    "React, Next.js, Node.js — mon socle technique. À cela s'ajoute l'intelligence artificielle : intégration, automatisation, solutions intelligentes au cœur du produit.",
+    "Précision, qualité, expérience utilisateur. Ma démarche : concevoir des systèmes robustes, élégants, conçus pour évoluer.",
+    "Mes réalisations couvrent le gaming éducatif, le sport mobile et la réservation en ligne.",
   ],
   stats: {
     repos: 48,
@@ -24,19 +25,19 @@ export const profile = {
 
 export const skillGroups = [
   {
-    category: "Frontend",
+    category: "Interfaces & expérience",
     skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "PWA"],
   },
   {
-    category: "Backend",
+    category: "Architecture & données",
     skills: ["Node.js", "Express", "Python", "PostgreSQL", "Socket.io", "JWT"],
   },
   {
-    category: "IA & Services",
+    category: "Intelligence & intégrations",
     skills: ["OpenAI", "Stripe", "Supabase", "Brevo", "Docker", "NextAuth"],
   },
   {
-    category: "Mobile & Outils",
+    category: "Mobile & déploiement",
     skills: ["React Native", "Dart", "Git", "Netlify", "Vercel", "Zustand"],
   },
 ];

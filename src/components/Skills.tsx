@@ -13,8 +13,8 @@ export function Skills() {
         <SectionHeading
           number="02"
           label="Compétences"
-          title="Technologies & outils"
-          subtitle="Une stack moderne au service de produits performants, scalables et élégants."
+          title="Stack & savoir-faire"
+          subtitle="Une ingénierie moderne au service de produits performants, durables et raffinés."
         />
 
         <dl className="mt-20 sm:mt-24">

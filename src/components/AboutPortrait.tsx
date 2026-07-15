@@ -31,7 +31,7 @@ export function AboutPortrait() {
         className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
       />
       <p className="mt-10 hidden font-mono text-[0.5625rem] tracking-[0.22em] text-muted/40 uppercase lg:block">
-        Portrait · Studio
+        Portrait · Atelier
       </p>
     </motion.div>
   );

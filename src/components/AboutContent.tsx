@@ -26,7 +26,7 @@ function ProjectLiveLink({ slug, children }: { slug: string; children: string })
 }
 
 function AboutParagraph({ paragraph, index }: { paragraph: string; index: number }) {
-  if (index !== 1) {
+  if (index !== 3) {
     return <>{paragraph}</>;
   }
 
@@ -44,10 +44,10 @@ function AboutParagraph({ paragraph, index }: { paragraph: string; index: number
 }
 
 const stats = [
-  { label: "Repos publics", value: profile.stats.repos },
-  { label: "Followers", value: profile.stats.followers },
-  { label: "Expertise", value: profile.expertise },
-  { label: "Depuis", value: profile.stats.since },
+  { label: "Code source", value: profile.stats.repos },
+  { label: "Communauté", value: profile.stats.followers },
+  { label: "Spécialisation", value: profile.expertise },
+  { label: "En activité", value: profile.stats.since },
 ];
 
 export function AboutContent() {
@@ -57,7 +57,7 @@ export function AboutContent() {
         number="01"
         label="À propos"
         title="Qui je suis"
-        subtitle="Développeur full-stack spécialisé IA, basé à Paris — je conçois des produits web d'exception."
+        subtitle="Ingénieur full-stack & IA, basé à Paris. Des expériences digitales conçues avec rigueur et intention."
       />
 
       <div className="mt-20 space-y-10 sm:mt-24 sm:space-y-12">
