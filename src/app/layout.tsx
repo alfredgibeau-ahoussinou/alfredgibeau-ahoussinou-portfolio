@@ -25,13 +25,14 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alfredgibeau-ahoussinou.vercel.app"),
   title: `${profile.name} — ${profile.role}`,
   description: `${profile.bio} ${profile.tagline}`,
   openGraph: {
     title: `${profile.name} — Portfolio`,
     description: `${profile.bio} ${profile.tagline}`,
     type: "website",
-    images: [{ url: profile.avatar }],
+    images: [{ url: profile.avatar, alt: profile.name }],
   },
 };
 

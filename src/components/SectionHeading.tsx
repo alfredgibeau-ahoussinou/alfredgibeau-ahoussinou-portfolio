@@ -42,7 +42,7 @@ export function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.75, delay: 0.05, ease: EASE_LUXURY }}
-        className={`text-display text-[clamp(2.25rem,5.5vw,4rem)] text-foreground ${centered ? "mx-auto" : ""}`}
+        className={`text-display text-[clamp(2.5rem,6vw,4.5rem)] text-foreground ${centered ? "mx-auto" : ""}`}
       >
         {title}
       </motion.h2>
@@ -53,7 +53,7 @@ export function SectionHeading({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.1, ease: EASE_LUXURY }}
-          className={`mt-6 max-w-xl text-[0.9375rem] leading-[1.85] text-muted ${centered ? "mx-auto" : ""}`}
+          className={`mt-8 max-w-xl text-[0.9375rem] leading-[1.9] text-muted/90 ${centered ? "mx-auto" : ""}`}
         >
           {subtitle}
         </motion.p>

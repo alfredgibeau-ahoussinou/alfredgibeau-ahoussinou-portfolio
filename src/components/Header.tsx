@@ -47,20 +47,20 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ${
-        scrolled ? "glass-header" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+        scrolled ? "glass-header py-0" : "bg-transparent"
       }`}
     >
-      <nav className="page-container flex items-center justify-between py-6 lg:py-8">
+      <nav className="page-container flex items-center justify-between py-7 lg:py-9">
         <Magnetic strength={0.12}>
           <Link
             href="/"
             className="group flex flex-col gap-1 transition-opacity duration-500 hover:opacity-70"
           >
-            <span className="font-serif text-[1.125rem] tracking-[-0.02em] text-foreground lg:text-xl">
+            <span className="font-serif text-[1.125rem] tracking-[-0.025em] text-foreground lg:text-[1.25rem]">
               {profile.name}
             </span>
-            <span className="font-mono text-[0.5rem] uppercase tracking-[0.28em] text-muted/50">
+            <span className="font-mono text-[0.46875rem] uppercase tracking-[0.32em] text-muted/45">
               Full-Stack & IA
             </span>
           </Link>
@@ -74,16 +74,16 @@ export function Header() {
                 <Magnetic strength={0.1}>
                   <Link
                     href={link.href}
-                    className={`link-center-underline relative block px-5 py-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.16em] transition-colors duration-500 ${
+                    className={`link-center-underline relative block px-6 py-2.5 font-mono text-[0.625rem] uppercase tracking-[0.2em] transition-colors duration-500 ${
                       active
                         ? "text-foreground"
-                        : "text-muted/70 hover:text-foreground"
+                        : "text-muted/65 hover:text-foreground"
                     }`}
                   >
                     {active && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute inset-x-4 -bottom-0.5 h-px bg-accent/70"
+                        className="absolute inset-x-5 -bottom-0.5 h-px bg-accent/60"
                         transition={{
                           type: "spring",
                           stiffness: 380,

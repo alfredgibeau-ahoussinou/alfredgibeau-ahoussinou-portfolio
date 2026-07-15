@@ -46,7 +46,7 @@ export function ContactContent() {
           hidden: {},
           visible: { transition: { staggerChildren: 0.12 } },
         }}
-        className="mt-32"
+        className="mt-36"
       >
         {links.map((link) => (
           <motion.li
@@ -59,7 +59,7 @@ export function ContactContent() {
                 transition: { duration: 0.75, ease: EASE_LUXURY },
               },
             }}
-            className="border-t border-border-subtle py-14 first:border-t-0 first:pt-0"
+            className="border-t border-border-subtle py-16 first:border-t-0 first:pt-0"
           >
             {link.href ? (
               <Magnetic strength={0.08}>
@@ -67,11 +67,11 @@ export function ContactContent() {
                   href={link.href}
                   target={link.external ? "_blank" : undefined}
                   rel={link.external ? "noopener noreferrer" : undefined}
-                  className="group flex items-end justify-between gap-8 transition-opacity hover:opacity-80"
+                  className="group flex items-end justify-between gap-10 transition-opacity duration-500 hover:opacity-85"
                 >
                   <div>
                     <p className="text-label">{link.label}</p>
-                    <p className="mt-6 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
+                    <p className="mt-8 font-serif text-[clamp(1.625rem,5vw,3.25rem)] tracking-[-0.025em] text-foreground">
                       {link.value}
                     </p>
                   </div>
@@ -84,7 +84,7 @@ export function ContactContent() {
             ) : (
               <div>
                 <p className="text-label">{link.label}</p>
-                <p className="mt-6 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
+                <p className="mt-8 font-serif text-[clamp(1.625rem,5vw,3.25rem)] tracking-[-0.025em] text-foreground">
                   {link.value}
                 </p>
               </div>
@@ -98,7 +98,7 @@ export function ContactContent() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.15, ease: EASE_LUXURY }}
-        className="mt-28 border-t border-border-subtle pt-24"
+        className="mt-32 border-t border-border-subtle pt-28"
       >
         <p className="max-w-md text-[0.9375rem] leading-[1.9] text-muted/85">
           Pour une mission, un produit ou une intégration IA — décrivez votre

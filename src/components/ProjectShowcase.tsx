@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
 import type { Project } from "@/data/projects";
@@ -25,6 +25,7 @@ function ShowcaseItem({
   showLinks: boolean;
 }) {
   const ref = useRef<HTMLElement>(null);
+  const reducedMotion = useReducedMotion();
   const reversed = index % 2 === 1;
   const imageUrl = getProjectImageUrl(project);
   const num = String(index + 1).padStart(2, "0");
@@ -33,7 +34,11 @@ function ShowcaseItem({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["4%", "-4%"]);
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? ["0%", "0%"] : ["5%", "-5%"],
+  );
 
   return (
     <motion.article
@@ -54,7 +59,7 @@ function ShowcaseItem({
       </span>
 
       <div
-        className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-20 xl:gap-28 ${
+        className={`grid items-center gap-16 lg:grid-cols-2 lg:gap-24 xl:gap-36 ${
           reversed ? "lg:[direction:rtl]" : ""
         }`}
       >
@@ -80,7 +85,7 @@ function ShowcaseItem({
           </div>
 
           <Link href={`/projets/${project.slug}`} className="group mt-8 block">
-            <h3 className="text-display text-[clamp(2rem,5vw,3.75rem)] text-foreground transition-opacity duration-500 group-hover:opacity-70">
+            <h3 className="text-display text-[clamp(2.125rem,5.5vw,4.25rem)] text-foreground transition-opacity duration-500 group-hover:opacity-75">
               {project.title}
             </h3>
             <div className="showcase-hover-line mt-6 h-px w-full max-w-xs bg-accent/50" />
@@ -143,7 +148,7 @@ export function ProjectShowcase({
   showLinks = true,
 }: ProjectShowcaseProps) {
   return (
-    <div className="space-y-32 lg:space-y-44">
+    <div className="space-y-36 lg:space-y-52">
       {projects.map((project, index) => (
         <ShowcaseItem
           key={project.id}

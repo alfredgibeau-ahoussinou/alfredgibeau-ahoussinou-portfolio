@@ -12,7 +12,7 @@ export function FeaturedProjects() {
   const featured = getFeaturedProjects();
 
   return (
-    <section className="page-section-xl border-t border-border-subtle">
+    <section className="page-section-xl section-fade-top border-t border-border-subtle">
       <div className="page-container">
         <SectionHeading
           number="02"
@@ -21,7 +21,7 @@ export function FeaturedProjects() {
           subtitle="Trois réalisations — ingénierie web, mobile et intelligence artificielle au service du produit."
         />
 
-        <div className="mt-28 lg:mt-36">
+        <div className="mt-32 lg:mt-40">
           <ProjectShowcase projects={featured} showLinks={false} />
         </div>
 
@@ -30,7 +30,7 @@ export function FeaturedProjects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: EASE_LUXURY }}
-          className="mt-32 flex justify-center lg:mt-44"
+          className="mt-36 flex justify-center lg:mt-52"
         >
           <LinkPremium href="/projets">Voir tous les projets</LinkPremium>
         </motion.div>

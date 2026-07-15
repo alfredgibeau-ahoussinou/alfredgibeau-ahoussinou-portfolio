@@ -3,7 +3,7 @@ export const profile = {
   username: "alfredgibeau-ahoussinou",
   role: "Développeur Full-Stack & IA",
   subtitle: "Ingénierie web · Intelligence artificielle",
-  avatar: "https://avatars.githubusercontent.com/u/146840606?v=4",
+  avatar: "/images/alfred-portrait.png",
   location: "Puteaux, France",
   expertise: "Full-Stack & IA",
   email: "alfred.ahoussinou@gmail.com",

@@ -1,34 +1,38 @@
 "use client";
 
-import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { profile } from "@/data/profile";
-import { getAvatarUrl } from "@/lib/images";
+import { PortraitFrame } from "./PortraitFrame";
 
 export function AboutPortrait() {
   const ref = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], ["6%", "-6%"]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? ["0%", "0%"] : ["8%", "-8%"],
+  );
 
   return (
     <motion.div
       ref={ref}
       style={{ y }}
-      className="portrait-artwork portrait-mask relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-surface lg:mx-0 lg:max-w-none lg:sticky lg:top-36 lg:self-start"
+      className="lg:sticky lg:top-32 lg:self-start"
     >
-      <Image
-        src={getAvatarUrl(1000)}
-        alt={`Portrait de ${profile.name}`}
-        fill
+      <PortraitFrame
         priority
-        className="object-cover object-top mix-blend-luminosity"
-        sizes="(max-width: 1024px) 80vw, 35vw"
+        variant="about"
+        sizes="(max-width: 1024px) 85vw, 38vw"
+        className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+      <p className="mt-10 hidden font-mono text-[0.5625rem] tracking-[0.22em] text-muted/40 uppercase lg:block">
+        Portrait · Studio
+      </p>
     </motion.div>
   );
 }
