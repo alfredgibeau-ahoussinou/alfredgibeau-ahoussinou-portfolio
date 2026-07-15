@@ -1,18 +1,19 @@
 export const profile = {
-  name: "Alfred Gibeau--Ahoussinou",
+  name: "Alfred Ahoussinou",
   username: "alfredgibeau-ahoussinou",
-  role: "Développeur Full-Stack",
-  subtitle: "Étudiant Holberton School Paris",
+  role: "Développeur Full-Stack & IA",
+  subtitle: "Ingénierie web · Intelligence artificielle",
   avatar: "https://avatars.githubusercontent.com/u/146840606?v=4",
   location: "Puteaux, France",
-  company: "Holberton School",
+  expertise: "Full-Stack & IA",
   email: "alfred.ahoussinou@gmail.com",
   github: "https://github.com/alfredgibeau-ahoussinou",
-  bio: "Passionné par la tech et la création de projets concrets. Je conçois des applications web et mobiles modernes — de la réservation en temps réel aux plateformes interactives — avec React, Next.js, Node.js et TypeScript.",
+  bio: "Je conçois des expériences digitales où l'ingénierie rencontre l'intelligence artificielle.",
+  tagline: "Architecte de produits web et solutions IA.",
   about: [
-    "Étudiant à Holberton School Paris, je transforme des idées en produits fonctionnels : sites vitrines, APIs REST, PWAs et outils IA.",
-    "Mes projets récents couvrent le gaming éducatif (JW Games), le sport mobile (ProDay) et la réservation en ligne pour salons de coiffure (XOhair).",
-    "Ouvert aux collaborations et nouveaux défis — j'aime apprendre vite et livrer des expériences soignées.",
+    "Développeur full-stack, je transforme des concepts en produits numériques précis — applications web, APIs, systèmes temps réel et intégrations IA.",
+    "Mes réalisations couvrent le gaming éducatif (JW Games), le sport mobile (ProDay) et la réservation en ligne (XOhair).",
+    "Ouvert aux collaborations exigeantes — j'allie rigueur technique et exécution soignée.",
   ],
   stats: {
     repos: 48,
@@ -31,11 +32,11 @@ export const skillGroups = [
     skills: ["Node.js", "Express", "Python", "PostgreSQL", "Socket.io", "JWT"],
   },
   {
-    category: "Services & Outils",
-    skills: ["Stripe", "Supabase", "Brevo", "Docker", "Git", "Netlify", "Vercel"],
+    category: "IA & Services",
+    skills: ["OpenAI", "Stripe", "Supabase", "Brevo", "Docker", "NextAuth"],
   },
   {
-    category: "Mobile & Autres",
-    skills: ["React Native", "Dart", "C", "Shell", "Zustand", "NextAuth"],
+    category: "Mobile & Outils",
+    skills: ["React Native", "Dart", "Git", "Netlify", "Vercel", "Zustand"],
   },
 ];

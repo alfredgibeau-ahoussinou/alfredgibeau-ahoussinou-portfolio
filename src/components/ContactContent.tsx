@@ -35,7 +35,7 @@ export function ContactContent() {
         number="01"
         label="Contact"
         title="Travaillons ensemble"
-        subtitle="Un projet en tête ? Une collaboration ? N'hésitez pas à me contacter — je réponds généralement sous 48h."
+        subtitle="Un projet ambitieux, une collaboration ou une mission — écrivez-moi. Réponse sous 48 heures."
       />
 
       <motion.ul
@@ -46,7 +46,7 @@ export function ContactContent() {
           hidden: {},
           visible: { transition: { staggerChildren: 0.12 } },
         }}
-        className="mt-28"
+        className="mt-32"
       >
         {links.map((link) => (
           <motion.li
@@ -59,7 +59,7 @@ export function ContactContent() {
                 transition: { duration: 0.75, ease: EASE_LUXURY },
               },
             }}
-            className="border-t border-border-subtle py-12 first:border-t-0 first:pt-0"
+            className="border-t border-border-subtle py-14 first:border-t-0 first:pt-0"
           >
             {link.href ? (
               <Magnetic strength={0.08}>
@@ -71,7 +71,7 @@ export function ContactContent() {
                 >
                   <div>
                     <p className="text-label">{link.label}</p>
-                    <p className="mt-5 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
+                    <p className="mt-6 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
                       {link.value}
                     </p>
                   </div>
@@ -84,7 +84,7 @@ export function ContactContent() {
             ) : (
               <div>
                 <p className="text-label">{link.label}</p>
-                <p className="mt-5 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
+                <p className="mt-6 font-serif text-[clamp(1.5rem,4.5vw,2.75rem)] tracking-[-0.02em] text-foreground">
                   {link.value}
                 </p>
               </div>
@@ -98,13 +98,13 @@ export function ContactContent() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.15, ease: EASE_LUXURY }}
-        className="mt-24 border-t border-border-subtle pt-20"
+        className="mt-28 border-t border-border-subtle pt-24"
       >
-        <p className="max-w-md text-[0.9375rem] leading-[1.85] text-muted">
-          Vous pouvez aussi m&apos;écrire directement pour discuter d&apos;une
-          idée, d&apos;un stage ou d&apos;une mission freelance.
+        <p className="max-w-md text-[0.9375rem] leading-[1.9] text-muted/85">
+          Pour une mission, un produit ou une intégration IA — décrivez votre
+          vision, je reviens vers vous avec précision.
         </p>
-        <Magnetic strength={0.15} className="mt-12 inline-block">
+        <Magnetic strength={0.15} className="mt-14 inline-block">
           <a
             href={`mailto:${profile.email}?subject=Collaboration%20portfolio`}
             className="btn-minimal"

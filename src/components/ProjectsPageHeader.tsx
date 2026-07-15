@@ -33,8 +33,8 @@ export function ProjectsPageHeader() {
         transition={{ duration: 0.7, delay: 0.4, ease: EASE_LUXURY }}
         className="mt-10 max-w-2xl text-[0.9375rem] leading-[1.9] text-muted"
       >
-        Trois réalisations récentes — applications web, mobile et plateformes
-        interactives, présentées comme une galerie.
+        Une sélection de produits web et mobile — conçus avec rigueur,
+        présentés comme une galerie.
       </motion.p>
     </>
   );

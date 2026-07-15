@@ -14,7 +14,7 @@ export function Skills() {
           number="02"
           label="Compétences"
           title="Technologies & outils"
-          subtitle="Stack moderne pour construire des applications performantes, scalables et agréables à utiliser."
+          subtitle="Une stack moderne au service de produits performants, scalables et élégants."
         />
 
         <dl className="mt-24 space-y-0">

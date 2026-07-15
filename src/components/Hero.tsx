@@ -14,8 +14,8 @@ import { TextReveal } from "./TextReveal";
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const nameParts = profile.name.split(" ");
-  const firstName = nameParts.slice(0, 2).join(" ");
-  const lastName = nameParts.slice(2).join(" ");
+  const firstName = nameParts[0];
+  const lastName = nameParts.slice(1).join(" ");
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -30,14 +30,14 @@ export function Hero() {
       ref={sectionRef}
       className="relative flex min-h-[100dvh] flex-col justify-end overflow-hidden"
     >
-      <motion.div style={{ opacity }} className="page-container relative pb-16 pt-36 lg:pb-24 lg:pt-44">
-        <div className="grid min-h-[calc(100dvh-8rem)] items-end gap-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-24">
+      <motion.div style={{ opacity }} className="page-container relative pb-20 pt-40 lg:pb-28 lg:pt-48">
+        <div className="grid min-h-[calc(100dvh-8rem)] items-end gap-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:gap-28">
           <motion.div style={{ y: contentY }} className="order-2 lg:order-1">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: EASE_LUXURY }}
-              className="mb-12 flex items-center gap-6"
+              className="mb-14 flex items-center gap-6"
             >
               <span className="section-number">01</span>
               <ScrollLine className="max-w-[80px] flex-1" />
@@ -47,7 +47,7 @@ export function Hero() {
             <h1 className="text-display-massive text-foreground">
               <TextReveal text={firstName} as="span" delay={0.15} />
               <br />
-              <span className="text-muted/80">
+              <span className="text-muted/75">
                 <TextReveal text={lastName} as="span" delay={0.35} />
               </span>
             </h1>
@@ -56,14 +56,14 @@ export function Hero() {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.5, ease: EASE_LUXURY }}
-              className="mt-12 h-px w-full max-w-sm origin-left bg-border"
+              className="mt-14 h-px w-full max-w-xs origin-left bg-gradient-to-r from-accent/60 to-transparent"
             />
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.55, ease: EASE_LUXURY }}
-              className="mt-10 font-serif text-xl tracking-[-0.02em] text-foreground/90 sm:text-2xl"
+              className="mt-12 font-serif text-xl tracking-[-0.02em] text-foreground/95 sm:text-2xl"
             >
               {profile.role}
             </motion.p>
@@ -71,8 +71,17 @@ export function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.65, ease: EASE_LUXURY }}
-              className="mt-8 max-w-md text-[0.9375rem] leading-[1.85] text-muted"
+              transition={{ duration: 0.7, delay: 0.62, ease: EASE_LUXURY }}
+              className="mt-4 max-w-lg font-serif text-lg tracking-[-0.01em] text-muted/90 sm:text-xl"
+            >
+              {profile.tagline}
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7, ease: EASE_LUXURY }}
+              className="mt-8 max-w-md text-[0.9375rem] leading-[1.9] text-muted/80"
             >
               {profile.bio}
             </motion.p>
@@ -80,12 +89,12 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.75, ease: EASE_LUXURY }}
-              className="mt-16 flex flex-wrap items-center gap-x-10 gap-y-6"
+              transition={{ duration: 0.7, delay: 0.8, ease: EASE_LUXURY }}
+              className="mt-20 flex flex-wrap items-center gap-x-12 gap-y-6"
             >
               <LinkPremium href="/projets">Explorer les projets</LinkPremium>
               <LinkPremium href="/a-propos" showArrow={false}>
-                Mon parcours
+                Mon expertise
               </LinkPremium>
             </motion.div>
           </motion.div>
@@ -107,9 +116,9 @@ export function Hero() {
                 sizes="(max-width: 1024px) 75vw, 35vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgb(201_173_120_/_0.06),transparent_50%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgb(201_173_120_/_0.07),transparent_50%)]" />
             </div>
-            <div className="mt-10 flex items-center justify-between border-t border-border-subtle pt-6">
+            <div className="mt-12 flex items-center justify-between border-t border-border-subtle pt-7">
               <span className="text-label">{profile.location}</span>
               <a
                 href={profile.github}

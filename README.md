@@ -1,4 +1,4 @@
-# Portfolio — Alfred Gibeau--Ahoussinou
+# Portfolio — Alfred Ahoussinou
 
 Portfolio personnel interactif (Next.js 16, Tailwind CSS, Framer Motion).
 

@@ -26,10 +26,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: `${profile.name} — ${profile.role}`,
-  description: profile.bio,
+  description: `${profile.bio} ${profile.tagline}`,
   openGraph: {
     title: `${profile.name} — Portfolio`,
-    description: profile.bio,
+    description: `${profile.bio} ${profile.tagline}`,
     type: "website",
     images: [{ url: profile.avatar }],
   },

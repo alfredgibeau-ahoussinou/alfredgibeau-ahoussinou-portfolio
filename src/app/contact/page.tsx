@@ -5,7 +5,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   title: `Contact — ${profile.name}`,
   description:
-    "Contactez Alfred Gibeau--Ahoussinou pour une collaboration, un projet ou une opportunité.",
+    "Contactez Alfred Ahoussinou — développeur full-stack & IA — pour une collaboration, un projet ou une mission.",
 };
 
 export default function ContactPage() {

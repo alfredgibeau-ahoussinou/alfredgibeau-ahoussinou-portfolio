@@ -6,7 +6,7 @@ import { profile } from "@/data/profile";
 export const metadata: Metadata = {
   title: `Projets — ${profile.name}`,
   description:
-    "Portfolio de projets web, mobile et full-stack — sites vitrines, APIs, PWAs et outils IA.",
+    "Sélection de réalisations full-stack & IA — applications web, mobile et plateformes interactives.",
 };
 
 export default function ProjectsPage() {

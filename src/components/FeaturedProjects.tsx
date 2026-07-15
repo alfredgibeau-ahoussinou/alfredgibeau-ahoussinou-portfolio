@@ -18,7 +18,7 @@ export function FeaturedProjects() {
           number="02"
           label="Sélection"
           title="Projets en vedette"
-          subtitle="Trois réalisations récentes — applications web, mobile et plateformes full-stack."
+          subtitle="Trois réalisations — ingénierie web, mobile et intelligence artificielle au service du produit."
         />
 
         <div className="mt-28 lg:mt-36">
