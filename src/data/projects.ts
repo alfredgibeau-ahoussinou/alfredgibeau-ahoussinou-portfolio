@@ -20,7 +20,7 @@ export const projects: Project[] = [
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Prisma", "Stripe", "Framer Motion"],
     github: "https://github.com/alfredgibeau-ahoussinou/aether-studio",
     live: "https://aether-studio-fawn.vercel.app",
-    image: "/projects/aether-studio.png",
+    image: "/projects/aether-studio.svg",
     featured: true,
   },
   {

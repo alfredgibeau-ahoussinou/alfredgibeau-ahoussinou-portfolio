@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" role="img" aria-label="Aether Studio">
+  <text
+    x="240"
+    y="108"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', Georgia, 'Times New Roman', serif"
+    font-size="72"
+    font-weight="500"
+    letter-spacing="0.06em"
+    fill="#f7f3eb"
+  >Aether</text>
+  <text
+    x="240"
+    y="152"
+    text-anchor="middle"
+    font-family="'DM Sans', system-ui, sans-serif"
+    font-size="18"
+    font-weight="500"
+    letter-spacing="0.28em"
+    fill="#c9ad78"
+  >STUDIO</text>
+</svg>

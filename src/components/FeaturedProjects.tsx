@@ -21,7 +21,7 @@ export function FeaturedProjects() {
         />
 
         <div className="mt-24 sm:mt-32 lg:mt-40">
-          <ProjectShowcase projects={featured} showLinks={false} />
+          <ProjectShowcase projects={featured} showLinks />
         </div>
 
         <motion.div
