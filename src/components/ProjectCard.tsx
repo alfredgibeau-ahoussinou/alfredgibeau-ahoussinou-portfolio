@@ -13,6 +13,35 @@ type ProjectCardProps = {
   variant?: "grid" | "featured" | "list";
 };
 
+function ProjectLinks({ project }: { project: Project }) {
+  return (
+    <div className="mt-5 flex flex-wrap items-center gap-3">
+      {project.live ? (
+        <a
+          href={project.live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
+        >
+          Voir le site
+          <ArrowUpRight size={14} />
+        </a>
+      ) : (
+        <span className="text-sm text-muted">Pas de déploiement public</span>
+      )}
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 border border-border px-4 py-2 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
+      >
+        Code
+        <ArrowUpRight size={14} />
+      </a>
+    </div>
+  );
+}
+
 export function ProjectCard({
   project,
   index = 0,
@@ -53,6 +82,7 @@ export function ProjectCard({
             />
           </div>
         </Link>
+        <ProjectLinks project={project} />
       </motion.article>
     );
   }
@@ -92,6 +122,7 @@ export function ProjectCard({
           {project.description}
         </p>
       </Link>
+      <ProjectLinks project={project} />
     </motion.article>
   );
 }

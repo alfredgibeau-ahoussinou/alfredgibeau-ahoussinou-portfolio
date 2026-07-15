@@ -91,27 +91,29 @@ export default async function ProjectDetailPage({ params }: Props) {
             </ul>
           </div>
 
-          <div className="mt-14 flex flex-wrap gap-8">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline inline-flex items-center gap-2 text-sm text-foreground transition-opacity hover:opacity-70"
-            >
-              Voir sur GitHub
-              <ArrowUpRight size={14} />
-            </a>
-            {project.live && (
+          <div className="mt-14 flex flex-wrap items-center gap-4">
+            {project.live ? (
               <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
               >
-                Site en ligne
+                Voir le site
                 <ArrowUpRight size={14} />
               </a>
+            ) : (
+              <span className="text-sm text-muted">Pas de déploiement public</span>
             )}
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
+            >
+              Code
+              <ArrowUpRight size={14} />
+            </a>
           </div>
         </div>
       </section>

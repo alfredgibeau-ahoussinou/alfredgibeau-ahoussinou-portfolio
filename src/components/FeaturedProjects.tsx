@@ -15,7 +15,7 @@ export function FeaturedProjects() {
         <SectionHeading
           label="Sélection"
           title="Projets en vedette"
-          subtitle="Une sélection de réalisations récentes — applications web, mobile et plateformes full-stack."
+          subtitle="3 réalisations récentes — applications web, mobile et plateformes full-stack."
         />
 
         <div className="mt-20 grid gap-16 md:grid-cols-2">
