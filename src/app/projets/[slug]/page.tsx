@@ -37,10 +37,11 @@ export default async function ProjectDetailPage({ params }: Props) {
   if (!project) notFound();
 
   const imageUrl = getProjectImageUrl(project);
+  const projectIndex = projects.findIndex((p) => p.slug === slug) + 1;
 
   return (
     <main>
-      <section className="pt-28">
+      <section className="pt-32">
         <div className="page-container">
           <Link
             href="/projets"
@@ -51,68 +52,76 @@ export default async function ProjectDetailPage({ params }: Props) {
           </Link>
         </div>
 
-        <div className="page-container mt-10">
-          <ProjectLogo
-            src={imageUrl}
-            alt={`Logo du projet ${project.title}`}
-            className="mx-auto max-w-sm sm:max-w-md"
-            sizes="(max-width: 768px) 100vw, 28rem"
-            priority
-            padding="lg"
-          />
-        </div>
-
-        <div className="page-container page-section pt-16">
-          <p className="text-xs uppercase tracking-[0.25em] text-accent">
-            Projet
-          </p>
-          <h1 className="mt-6 font-serif text-4xl tracking-tight text-foreground sm:text-5xl">
-            {project.title}
-          </h1>
-
-          <p className="mt-10 max-w-3xl text-lg leading-[1.85] text-muted">
-            {project.description}
-          </p>
-
-          <div className="mt-14 border-t border-border pt-14">
-            <p className="text-xs uppercase tracking-[0.2em] text-muted">
-              Stack technique
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {project.tech.map((tech) => (
-                <li
-                  key={tech}
-                  className="border border-border px-4 py-2 text-sm text-foreground/80"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
+        <div className="page-container mt-16 grid gap-16 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-20">
+          <div className="card-premium overflow-hidden lg:sticky lg:top-32">
+            <ProjectLogo
+              src={imageUrl}
+              alt={`Logo du projet ${project.title}`}
+              className="border-0"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              priority
+              padding="lg"
+            />
           </div>
 
-          <div className="mt-14 flex flex-wrap items-center gap-4">
-            {project.live ? (
+          <div className="page-section py-0 pt-4 lg:pt-0">
+            <div className="flex items-center gap-4">
+              <span className="section-number">
+                {String(projectIndex).padStart(2, "0")}
+              </span>
+              <span className="text-label-accent">Projet</span>
+            </div>
+
+            <h1 className="text-display mt-8 text-[clamp(2.5rem,5vw,4rem)] text-foreground">
+              {project.title}
+            </h1>
+
+            <div className="line-accent mt-10 max-w-[160px]" />
+
+            <p className="mt-10 text-lg leading-[1.85] text-muted sm:text-xl">
+              {project.description}
+            </p>
+
+            <div className="mt-16 border-t border-border-subtle pt-14">
+              <p className="text-label">Stack technique</p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {project.tech.map((tech) => (
+                  <li
+                    key={tech}
+                    className="border border-border-subtle px-4 py-2 font-mono text-[0.75rem] tracking-wide text-foreground/80"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-14 flex flex-wrap items-center gap-4">
+              {project.live ? (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-ghost"
+                >
+                  Voir le site
+                  <ArrowUpRight size={14} />
+                </a>
+              ) : (
+                <span className="font-mono text-[0.6875rem] uppercase tracking-wider text-muted/70">
+                  Pas de déploiement public
+                </span>
+              )}
               <a
-                href={project.live}
+                href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
+                className="link-underline inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground"
               >
-                Voir le site
+                Code
                 <ArrowUpRight size={14} />
               </a>
-            ) : (
-              <span className="text-sm text-muted">Pas de déploiement public</span>
-            )}
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm text-foreground transition-colors hover:border-foreground/30 hover:bg-surface"
-            >
-              Code
-              <ArrowUpRight size={14} />
-            </a>
+            </div>
           </div>
         </div>
       </section>

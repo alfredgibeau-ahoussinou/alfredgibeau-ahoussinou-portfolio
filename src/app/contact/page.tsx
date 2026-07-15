@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <section className="page-section pt-32">
-        <div className="page-container max-w-3xl">
+      <section className="page-section pt-36">
+        <div className="page-container max-w-4xl">
           <ContactContent />
         </div>
       </section>

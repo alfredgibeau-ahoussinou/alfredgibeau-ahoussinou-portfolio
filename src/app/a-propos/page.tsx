@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
-      <section className="page-section pt-32">
+      <section className="page-section pt-36">
         <div className="page-container">
-          <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
-            <div className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-surface lg:mx-0 lg:max-w-none">
+          <div className="grid gap-20 lg:grid-cols-[0.9fr_1.1fr] lg:gap-28">
+            <div className="portrait-frame relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden bg-surface lg:mx-0 lg:max-w-none lg:sticky lg:top-32 lg:self-start">
               <Image
                 src={getAvatarUrl(1000)}
                 alt={`Portrait de ${profile.name}`}
@@ -25,6 +25,7 @@ export default function AboutPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 80vw, 35vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/30 via-transparent to-transparent" />
             </div>
             <AboutContent />
           </div>

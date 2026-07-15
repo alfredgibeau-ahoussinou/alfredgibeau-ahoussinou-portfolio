@@ -30,51 +30,62 @@ export function ContactContent() {
   return (
     <>
       <SectionHeading
+        number="01"
         label="Contact"
         title="Travaillons ensemble"
         subtitle="Un projet en tête ? Une collaboration ? N'hésitez pas à me contacter — je réponds généralement sous 48h."
       />
 
       <motion.ul
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-        className="mt-20 divide-y divide-border"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.1 } },
+        }}
+        className="mt-24"
       >
         {links.map((link) => (
-          <li key={link.label} className="py-8">
+          <motion.li
+            key={link.label}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+            className="border-t border-border-subtle py-10 first:border-t-0 first:pt-0"
+          >
             {link.href ? (
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="group flex items-center justify-between transition-opacity hover:opacity-70"
+                className="group flex items-end justify-between gap-6 transition-opacity hover:opacity-80"
               >
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">
-                    {link.label}
-                  </p>
-                  <p className="mt-3 font-serif text-2xl text-foreground">
+                  <p className="text-label">{link.label}</p>
+                  <p className="mt-4 font-serif text-[clamp(1.5rem,4vw,2.5rem)] tracking-tight text-foreground">
                     {link.value}
                   </p>
                 </div>
                 <ArrowUpRight
-                  size={18}
-                  className="text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  size={20}
+                  className="mb-2 shrink-0 text-muted/50 transition-all duration-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
                 />
               </a>
             ) : (
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-muted">
-                  {link.label}
-                </p>
-                <p className="mt-3 font-serif text-2xl text-foreground">
+                <p className="text-label">{link.label}</p>
+                <p className="mt-4 font-serif text-[clamp(1.5rem,4vw,2.5rem)] tracking-tight text-foreground">
                   {link.value}
                 </p>
               </div>
             )}
-          </li>
+          </motion.li>
         ))}
       </motion.ul>
 
@@ -82,18 +93,18 @@ export function ContactContent() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="mt-16 border-t border-border pt-16"
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="mt-20 border-t border-border-subtle pt-16"
       >
-        <p className="text-sm leading-relaxed text-muted">
+        <p className="max-w-md text-base leading-[1.75] text-muted">
           Vous pouvez aussi m&apos;écrire directement pour discuter d&apos;une
           idée, d&apos;un stage ou d&apos;une mission freelance.
         </p>
         <a
           href={`mailto:${profile.email}?subject=Collaboration%20portfolio`}
-          className="link-underline mt-8 inline-block text-sm tracking-wide text-foreground transition-opacity hover:opacity-70"
+          className="btn-ghost mt-10"
         >
-          Envoyer un message →
+          Envoyer un message
         </a>
       </motion.div>
     </>
