@@ -3,43 +3,36 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getFeaturedProjects } from "@/data/projects";
-import { ProjectCard } from "./ProjectCard";
+import { EASE_LUXURY } from "@/lib/motion";
+import { LinkPremium } from "./LinkPremium";
+import { ProjectShowcase } from "./ProjectShowcase";
 import { SectionHeading } from "./SectionHeading";
 
 export function FeaturedProjects() {
   const featured = getFeaturedProjects();
 
   return (
-    <section className="page-section border-t border-border-subtle">
+    <section className="page-section-xl border-t border-border-subtle">
       <div className="page-container">
         <SectionHeading
           number="02"
           label="Sélection"
           title="Projets en vedette"
-          subtitle="3 réalisations récentes — applications web, mobile et plateformes full-stack."
+          subtitle="Trois réalisations récentes — applications web, mobile et plateformes full-stack."
         />
 
-        <div className="mt-20 grid gap-16 md:grid-cols-2 md:gap-x-12 md:gap-y-20 lg:gap-x-16">
-          {featured.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              index={index}
-              variant="featured"
-            />
-          ))}
+        <div className="mt-28 lg:mt-36">
+          <ProjectShowcase projects={featured} showLinks={false} />
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-24 flex justify-center"
+          transition={{ duration: 0.7, ease: EASE_LUXURY }}
+          className="mt-32 flex justify-center lg:mt-44"
         >
-          <Link href="/projets" className="link-premium text-sm tracking-wide text-muted hover:text-foreground">
-            Voir tous les projets
-          </Link>
+          <LinkPremium href="/projets">Voir tous les projets</LinkPremium>
         </motion.div>
       </div>
     </section>

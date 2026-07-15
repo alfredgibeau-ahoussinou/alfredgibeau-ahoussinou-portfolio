@@ -4,6 +4,7 @@ import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { Providers } from "@/components/Providers";
 import { profile } from "@/data/profile";
 
 const inter = Inter({
@@ -42,14 +43,17 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable} scroll-smooth`}
+      className={`${inter.variable} ${instrumentSerif.variable} ${ibmPlexMono.variable}`}
     >
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <body className="relative min-h-screen bg-background font-sans text-foreground antialiased">
+        <div className="mesh-bg" aria-hidden="true" />
         <div className="noise-overlay" aria-hidden="true" />
-        <CustomCursor />
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <CustomCursor />
+          <Header />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

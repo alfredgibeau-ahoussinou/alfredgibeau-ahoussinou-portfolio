@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { EASE_LUXURY } from "@/lib/motion";
+import { ScrollLine } from "./ScrollLine";
 
 type SectionHeadingProps = {
   label: string;
@@ -24,32 +26,34 @@ export function SectionHeading({
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.5 }}
-        className={`mb-6 flex items-center gap-4 ${centered ? "justify-center" : ""}`}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: EASE_LUXURY }}
+        className={`mb-8 flex items-center gap-5 ${centered ? "justify-center" : ""}`}
       >
         {number && <span className="section-number">{number}</span>}
         <span className="text-label">{label}</span>
-        {!centered && <div className="line-accent hidden flex-1 max-w-[80px] sm:block" />}
+        {!centered && (
+          <ScrollLine className="hidden max-w-[80px] flex-1 sm:block" />
+        )}
       </motion.div>
 
       <motion.h2
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-        className={`text-display text-[clamp(2rem,5vw,3.25rem)] text-foreground ${centered ? "mx-auto" : ""}`}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.75, delay: 0.05, ease: EASE_LUXURY }}
+        className={`text-display text-[clamp(2.25rem,5.5vw,4rem)] text-foreground ${centered ? "mx-auto" : ""}`}
       >
         {title}
       </motion.h2>
 
       {subtitle && (
         <motion.p
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className={`mt-5 max-w-xl text-base leading-[1.75] text-muted sm:text-[1.0625rem] ${centered ? "mx-auto" : ""}`}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: EASE_LUXURY }}
+          className={`mt-6 max-w-xl text-[0.9375rem] leading-[1.85] text-muted ${centered ? "mx-auto" : ""}`}
         >
           {subtitle}
         </motion.p>

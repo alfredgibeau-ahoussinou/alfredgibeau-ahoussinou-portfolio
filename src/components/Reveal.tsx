@@ -1,20 +1,21 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { EASE_LUXURY } from "@/lib/motion";
 
 const containerVariants: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.06 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.75, ease: EASE_LUXURY },
   },
 };
 
@@ -37,13 +38,13 @@ export function Reveal({
     <Component
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-80px" }}
       variants={{
         ...containerVariants,
         visible: {
           ...containerVariants.visible,
           transition: {
-            staggerChildren: 0.08,
+            staggerChildren: 0.1,
             delayChildren: delay,
           },
         },
