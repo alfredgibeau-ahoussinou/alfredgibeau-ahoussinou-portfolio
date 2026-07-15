@@ -36,8 +36,10 @@ function AboutParagraph({ paragraph, index }: { paragraph: string; index: number
       <ProjectLiveLink slug="jw-games">JW Games</ProjectLiveLink>
       ), le sport mobile (
       <ProjectLiveLink slug="proday">ProDay</ProjectLiveLink>
-      ) et la réservation en ligne (
+      ), la réservation en ligne (
       <ProjectLiveLink slug="xo-hair">XOhair</ProjectLiveLink>
+      ) et l&apos;intelligence créative (
+      <ProjectLiveLink slug="aether-studio">Aether Studio</ProjectLiveLink>
       ).
     </>
   );

@@ -12,6 +12,18 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "aether-studio",
+    slug: "aether-studio",
+    title: "Aether Studio",
+    description:
+      "Plateforme premium d'intelligence créative et d'automatisation IA — comptes IA spécialisés, automatisations quotidiennes prêtes à activer et bibliothèque de prompts viraux pour LinkedIn, Reels, YouTube et CV optimisés ATS. Intégrations Notion, Slack, LinkedIn et Indeed.",
+    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Prisma", "Stripe", "Framer Motion"],
+    github: "https://github.com/alfredgibeau-ahoussinou/aether-studio",
+    live: "https://aether-studio-fawn.vercel.app",
+    image: "/projects/aether-studio.png",
+    featured: true,
+  },
+  {
     id: "jw-games",
     slug: "jw-games",
     title: "JW Games",
