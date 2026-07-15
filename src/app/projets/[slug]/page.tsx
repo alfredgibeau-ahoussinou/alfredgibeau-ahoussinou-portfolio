@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ProjectLogo } from "@/components/ProjectLogo";
 import { getProjectBySlug, projects } from "@/data/projects";
 import { getProjectImageUrl } from "@/lib/images";
 import { profile } from "@/data/profile";
@@ -51,16 +51,15 @@ export default async function ProjectDetailPage({ params }: Props) {
           </Link>
         </div>
 
-        <div className="relative mt-10 aspect-[21/9] w-full overflow-hidden bg-surface sm:aspect-[2.5/1]">
-          <Image
+        <div className="page-container mt-10">
+          <ProjectLogo
             src={imageUrl}
-            alt={`Capture du projet ${project.title}`}
-            fill
+            alt={`Logo du projet ${project.title}`}
+            className="mx-auto max-w-sm sm:max-w-md"
+            sizes="(max-width: 768px) 100vw, 28rem"
             priority
-            className="object-cover"
-            sizes="100vw"
+            padding="lg"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
 
         <div className="page-container page-section pt-16">

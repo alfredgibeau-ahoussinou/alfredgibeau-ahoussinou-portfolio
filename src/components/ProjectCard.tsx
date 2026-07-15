@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { getProjectImageUrl } from "@/lib/images";
+import { ProjectLogo } from "./ProjectLogo";
 
 type ProjectCardProps = {
   project: Project;
@@ -58,15 +58,12 @@ export function ProjectCard({
         transition={{ duration: 0.5, delay: index * 0.08 }}
       >
         <Link href={`/projets/${project.slug}`} className="group block">
-          <div className="image-hover image-overlay relative aspect-[16/10] overflow-hidden bg-surface">
-            <Image
-              src={imageUrl}
-              alt={`Aperçu du projet ${project.title}`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
+          <ProjectLogo
+            src={imageUrl}
+            alt={`Logo du projet ${project.title}`}
+            className="image-hover transition-colors duration-300 group-hover:border-foreground/20"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
           <div className="mt-6 flex items-start justify-between gap-4">
             <div>
               <h3 className="font-serif text-2xl text-foreground transition-opacity group-hover:opacity-70">
@@ -95,20 +92,13 @@ export function ProjectCard({
       transition={{ duration: 0.5, delay: index * 0.05 }}
     >
       <Link href={`/projets/${project.slug}`} className="group block">
-        <div className="image-hover image-overlay relative aspect-[16/10] overflow-hidden bg-surface">
-          <Image
-            src={imageUrl}
-            alt={`Aperçu du projet ${project.title}`}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-          <div className="absolute inset-x-0 bottom-0 p-6">
-            <span className="text-xs uppercase tracking-[0.15em] text-foreground/70">
-              {project.tech.slice(0, 2).join(" · ")}
-            </span>
-          </div>
-        </div>
+        <ProjectLogo
+          src={imageUrl}
+          alt={`Logo du projet ${project.title}`}
+          className="image-hover transition-colors duration-300 group-hover:border-foreground/20"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          padding="sm"
+        />
         <div className="mt-5 flex items-baseline justify-between gap-4">
           <h3 className="font-serif text-xl text-foreground transition-opacity group-hover:opacity-70">
             {project.title}

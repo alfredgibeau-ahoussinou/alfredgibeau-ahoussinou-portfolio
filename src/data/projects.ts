@@ -43,7 +43,7 @@ export const projects: Project[] = [
       "Site de réservation pour salon de coiffure à Melun — pose de perruques, customisation et mèches Virgin hair. Formulaire de RDV avec confirmations email via Brevo.",
     tech: ["Next.js 15", "React 19", "TypeScript", "Brevo"],
     github: "https://github.com/alfredgibeau-ahoussinou/XO-HAIR",
-    image: "/projects/xo-hair.png",
+    image: "/projects/xo-hair.svg",
     featured: true,
   },
 ];
