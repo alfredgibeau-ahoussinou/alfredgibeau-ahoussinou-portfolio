@@ -11,7 +11,7 @@ export const profile = {
   bio: "Passionné par la tech et la création de projets concrets. Je conçois des applications web et mobiles modernes — de la réservation en temps réel aux plateformes interactives — avec React, Next.js, Node.js et TypeScript.",
   about: [
     "Étudiant à Holberton School Paris, je transforme des idées en produits fonctionnels : sites vitrines, APIs REST, PWAs et outils IA.",
-    "Mes projets récents couvrent la coiffure (XOhair), le gaming éducatif (JW Games), la location premium (StoneFaste), la publicité digitale (StoneLead) et le sport (EvaSport).",
+    "Mes projets récents couvrent le gaming éducatif (JW Games), le sport mobile (ProDay) et la réservation en ligne pour salons de coiffure (XOhair).",
     "Ouvert aux collaborations et nouveaux défis — j'aime apprendre vite et livrer des expériences soignées.",
   ],
   stats: {

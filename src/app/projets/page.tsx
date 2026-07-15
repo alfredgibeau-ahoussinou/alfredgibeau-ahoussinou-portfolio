@@ -21,8 +21,8 @@ export default function ProjectsPage() {
             Tous les projets
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-[1.8] text-muted">
-            {projects.length} réalisations — du front au back, des sites vitrines
-            aux plateformes interactives et outils IA.
+            {projects.length} réalisations récentes — applications web, mobile et
+            plateformes interactives.
           </p>
         </div>
       </section>
