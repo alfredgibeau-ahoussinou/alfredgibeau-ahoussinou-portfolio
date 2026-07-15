@@ -6,7 +6,7 @@ export const profile = {
   avatar: "https://avatars.githubusercontent.com/u/146840606?v=4",
   location: "Puteaux, France",
   company: "Holberton School",
-  email: "7550@holbertonstudents.com",
+  email: "alfred.ahoussinou@gmail.com",
   github: "https://github.com/alfredgibeau-ahoussinou",
   bio: "Passionné par la tech et la création de projets concrets. Je conçois des applications web et mobiles modernes — de la réservation en temps réel aux plateformes interactives — avec React, Next.js, Node.js et TypeScript.",
   about: [
