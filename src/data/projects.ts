@@ -29,7 +29,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/nailsconnection-z-docs",
     live: "https://nailsconnection-z.netlify.app",
     image: "/projects/nailsconnection-z.svg",
-    logoScale: { maxWidth: 88, maxHeight: 48 },
+    logoScale: { maxWidth: 84, maxHeight: 50 },
     featured: true,
   },
   {
