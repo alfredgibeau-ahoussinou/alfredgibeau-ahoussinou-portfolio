@@ -94,7 +94,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/XO-HAIR",
     live: "https://xo-hair-melun.netlify.app",
     image: "/projects/xo-hair.svg",
-    logoScale: { maxWidth: 84, maxHeight: 50 },
+    logoScale: { maxWidth: 70, maxHeight: 45 },
     featured: true,
   },
 ];
