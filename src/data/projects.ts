@@ -20,7 +20,7 @@ export const projects: Project[] = [
     tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Netlify Blobs", "Resend"],
     github: "https://github.com/alfredgibeau-ahoussinou/nailsconnection-z-docs",
     live: "https://nailsconnection-z.netlify.app",
-    image: "/projects/nailsconnection-z.png",
+    image: "/projects/nailsconnection-z.svg",
     featured: true,
   },
   {
