@@ -14,7 +14,7 @@ export const profile = {
     "Développeur full-stack et ingénieur IA, j'élabore des architectures web et des expériences digitales pensées pour l'impact.",
     "React, Next.js, Node.js — mon socle technique. À cela s'ajoute l'intelligence artificielle : intégration, automatisation, solutions intelligentes au cœur du produit.",
     "Précision, qualité, expérience utilisateur. Ma démarche : concevoir des systèmes robustes, élégants, conçus pour évoluer.",
-    "Mes réalisations couvrent le gaming éducatif, le sport mobile, la réservation en ligne et l'intelligence créative automatisée.",
+    "Mes réalisations couvrent la beauté en ligne, l'éducation tech, le gaming éducatif, le sport mobile, la réservation en ligne et l'intelligence créative automatisée.",
   ],
   stats: {
     repos: 48,

@@ -32,7 +32,11 @@ function AboutParagraph({ paragraph, index }: { paragraph: string; index: number
 
   return (
     <>
-      Mes réalisations couvrent le gaming éducatif (
+      Mes réalisations couvrent la beauté en ligne (
+      <ProjectLiveLink slug="nailsconnection-z">NailsConnection.Z</ProjectLiveLink>
+      ), l&apos;éducation tech (
+      <ProjectLiveLink slug="code-academy-alfred">Code Academy Alfred</ProjectLiveLink>
+      ), le gaming éducatif (
       <ProjectLiveLink slug="jw-games">JW Games</ProjectLiveLink>
       ), le sport mobile (
       <ProjectLiveLink slug="proday">ProDay</ProjectLiveLink>

@@ -12,6 +12,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "nailsconnection-z",
+    slug: "nailsconnection-z",
+    title: "NailsConnection.Z",
+    description:
+      "Site vitrine et réservation en ligne pour nail tech à Grenoble — prestations gel, capsules, manucure et nail art. Créneaux natifs, espace cliente, validation admin et confirmations email via Resend.",
+    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Netlify Blobs", "Resend"],
+    github: "https://github.com/alfredgibeau-ahoussinou/nailsconnection-z-docs",
+    live: "https://nailsconnection-z.netlify.app",
+    image: "/projects/nailsconnection-z.png",
+    featured: true,
+  },
+  {
+    id: "code-academy-alfred",
+    slug: "code-academy-alfred",
+    title: "Code Academy Alfred",
+    description:
+      "Académie bilingue FR/EN pour apprendre le développement web et la data de A à Z — 18 modules structurés, progression locale, lecture vocale Web Speech et synthèse TTS intégrée.",
+    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "next-intl", "Framer Motion"],
+    github: "https://github.com/alfredgibeau-ahoussinou/code-academy-alfred-docs",
+    live: "https://code-academy-alfred.netlify.app",
+    image: "/projects/code-academy-alfred.svg",
+    featured: true,
+  },
+  {
     id: "aether-studio",
     slug: "aether-studio",
     title: "Aether Studio",
