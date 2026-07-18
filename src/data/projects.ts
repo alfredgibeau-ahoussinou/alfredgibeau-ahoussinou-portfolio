@@ -1,3 +1,10 @@
+export type LogoScale = {
+  /** Largeur max du logo en % du conteneur (wordmarks larges : ~84–88) */
+  maxWidth?: number;
+  /** Hauteur max du logo en % du conteneur (logos compacts : ~56–70) */
+  maxHeight?: number;
+};
+
 export type Project = {
   id: string;
   slug: string;
@@ -7,6 +14,7 @@ export type Project = {
   github: string;
   live?: string;
   image?: string;
+  logoScale?: LogoScale;
   featured?: boolean;
 };
 
@@ -21,6 +29,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/nailsconnection-z-docs",
     live: "https://nailsconnection-z.netlify.app",
     image: "/projects/nailsconnection-z.svg",
+    logoScale: { maxWidth: 88, maxHeight: 48 },
     featured: true,
   },
   {
@@ -33,6 +42,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/code-academy-alfred-docs",
     live: "https://code-academy-alfred.netlify.app",
     image: "/projects/code-academy-alfred.svg",
+    logoScale: { maxWidth: 56, maxHeight: 56 },
     featured: true,
   },
   {
@@ -45,6 +55,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/aether-studio",
     live: "https://aether-studio-fawn.vercel.app",
     image: "/projects/aether-studio.svg",
+    logoScale: { maxWidth: 84, maxHeight: 50 },
     featured: true,
   },
   {
@@ -57,6 +68,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/jw-games",
     live: "https://jwgames.netlify.app",
     image: "/projects/jw-games-logo.png",
+    logoScale: { maxWidth: 68, maxHeight: 68 },
     featured: true,
   },
   {
@@ -69,6 +81,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/PRODAY-docs",
     live: "https://proday75.fr",
     image: "/projects/proday-logo.png",
+    logoScale: { maxWidth: 64, maxHeight: 70 },
     featured: true,
   },
   {
@@ -81,6 +94,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/XO-HAIR",
     live: "https://xo-hair-melun.netlify.app",
     image: "/projects/xo-hair.svg",
+    logoScale: { maxWidth: 82, maxHeight: 48 },
     featured: true,
   },
 ];

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import type { LogoScale } from "@/data/projects";
 
 type ProjectLogoProps = {
   src: string;
@@ -9,17 +10,20 @@ type ProjectLogoProps = {
   className?: string;
   sizes?: string;
   priority?: boolean;
-  padding?: "sm" | "md" | "lg";
+  logoScale?: LogoScale;
 };
 
-const paddingClasses = {
-  sm: "inset-[22%]",
-  md: "inset-[18%]",
-  lg: "inset-[15%]",
-} as const;
+const DEFAULT_SCALE: Required<LogoScale> = {
+  maxWidth: 82,
+  maxHeight: 72,
+};
 
 function isSvgSrc(src: string): boolean {
   return /\.svg($|\?)/i.test(src);
+}
+
+function resolveScale(logoScale?: LogoScale): Required<LogoScale> {
+  return { ...DEFAULT_SCALE, ...logoScale };
 }
 
 function LogoFallback({ alt }: { alt: string }) {
@@ -46,39 +50,47 @@ export function ProjectLogo({
   className = "",
   sizes = "100vw",
   priority = false,
-  padding = "md",
+  logoScale,
 }: ProjectLogoProps) {
   const [failed, setFailed] = useState(false);
   const svg = isSvgSrc(src);
+  const { maxWidth, maxHeight } = resolveScale(logoScale);
+  const imageStyle = {
+    maxWidth: `${maxWidth}%`,
+    maxHeight: `${maxHeight}%`,
+  } as const;
+  const imageClass =
+    "h-auto w-auto shrink-0 object-contain object-center [object-position:center_center]";
 
   return (
     <div
-      className={`relative aspect-[4/3] overflow-hidden border border-border-subtle bg-surface/80 ${className}`}
+      className={`relative flex aspect-[4/3] items-center justify-center overflow-hidden border border-border-subtle bg-surface/80 ${className}`}
     >
-      <div className={`absolute ${paddingClasses[padding]} relative`}>
-        {failed ? (
-          <LogoFallback alt={alt} />
-        ) : svg ? (
-          // next/image refuse l'optimisation SVG (400 sur Vercel) — img natif requis
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={src}
-            alt={alt}
-            className="h-full w-full object-contain object-center"
-            onError={() => setFailed(true)}
-          />
-        ) : (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            priority={priority}
-            className="object-contain object-center"
-            sizes={sizes}
-            onError={() => setFailed(true)}
-          />
-        )}
-      </div>
+      {failed ? (
+        <LogoFallback alt={alt} />
+      ) : svg ? (
+        // next/image refuse l'optimisation SVG (400 sur Vercel) — img natif requis
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={alt}
+          className={imageClass}
+          style={imageStyle}
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          width={0}
+          height={0}
+          sizes={sizes}
+          priority={priority}
+          className={imageClass}
+          style={{ ...imageStyle, width: "auto", height: "auto" }}
+          onError={() => setFailed(true)}
+        />
+      )}
     </div>
   );
 }

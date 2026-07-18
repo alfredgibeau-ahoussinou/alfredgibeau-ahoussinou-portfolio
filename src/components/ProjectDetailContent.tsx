@@ -72,7 +72,7 @@ export function ProjectDetailContent({
               className="border-0 bg-transparent"
               sizes="(max-width: 1024px) 100vw, 42vw"
               priority
-              padding="lg"
+              logoScale={project.logoScale}
             />
           </motion.div>
 

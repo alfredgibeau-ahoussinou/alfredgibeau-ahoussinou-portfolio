@@ -77,7 +77,7 @@ export function ProjectCard({
                 ? "(max-width: 768px) 100vw, 66vw"
                 : "(max-width: 768px) 100vw, 50vw"
             }
-            padding={featured ? "lg" : "md"}
+            logoScale={project.logoScale}
           />
         </div>
 

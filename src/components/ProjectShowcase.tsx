@@ -73,7 +73,7 @@ function ShowcaseItem({
               alt={`Logo du projet ${project.title}`}
               className="border-0 bg-transparent"
               sizes="(max-width: 1024px) 100vw, 45vw"
-              padding="lg"
+              logoScale={project.logoScale}
             />
           </motion.div>
         </Link>
