@@ -1,26 +1,12 @@
 import type { Metadata } from "next";
-import { AboutContent } from "@/components/AboutContent";
-import { AboutPortrait } from "@/components/AboutPortrait";
-import { Skills } from "@/components/Skills";
+import { EditorialPortfolio } from "@/components/EditorialPortfolio";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
-  title: `À propos — ${profile.name}`,
-  description: profile.about.join(" "),
+  title: `À propos | ${profile.name}`,
+  description: profile.bio,
 };
 
 export default function AboutPage() {
-  return (
-    <main>
-      <section className="page-section-xl pt-36">
-        <div className="page-container">
-          <div className="grid gap-20 sm:gap-24 lg:grid-cols-[0.9fr_1.1fr] lg:gap-32 xl:gap-40">
-            <AboutPortrait />
-            <AboutContent />
-          </div>
-        </div>
-      </section>
-      <Skills />
-    </main>
-  );
+  return <EditorialPortfolio initialMode="overview" initialAbout={true} />;
 }

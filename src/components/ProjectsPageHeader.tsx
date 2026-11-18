@@ -33,7 +33,7 @@ export function ProjectsPageHeader() {
         transition={{ duration: 0.65, delay: 0.35, ease: EASE_LUXURY }}
         className="text-body mt-8 max-w-2xl sm:mt-10"
       >
-        Une sélection de produits web et mobile — conçus avec rigueur,
+        Une sélection de produits web et mobile conçus avec rigueur,
         présentés comme une galerie.
       </motion.p>
     </>

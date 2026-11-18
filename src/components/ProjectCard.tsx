@@ -32,15 +32,6 @@ function ProjectLinks({ project }: { project: Project }) {
           Pas de déploiement public
         </span>
       )}
-      <a
-        href={project.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-link-action link-underline"
-      >
-        Code
-        <ArrowUpRight size={14} strokeWidth={1.5} />
-      </a>
     </div>
   );
 }

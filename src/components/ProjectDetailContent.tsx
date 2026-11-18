@@ -139,15 +139,6 @@ export function ProjectDetailContent({
                   Pas de déploiement public
                 </span>
               )}
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-link-action link-underline"
-              >
-                Code source
-                <ArrowUpRight size={14} strokeWidth={1.5} />
-              </a>
             </motion.div>
           </div>
         </div>

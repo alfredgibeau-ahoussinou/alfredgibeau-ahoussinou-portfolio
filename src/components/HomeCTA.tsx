@@ -13,7 +13,7 @@ export function HomeCTA() {
           number="03"
           label="Collaboration"
           title="Un projet en tête ?"
-          subtitle="Discutons de votre vision — produit web, intégration IA ou mission technique."
+          subtitle="Discutons de votre vision : produit web, intégration IA ou mission technique."
           align="center"
         />
 

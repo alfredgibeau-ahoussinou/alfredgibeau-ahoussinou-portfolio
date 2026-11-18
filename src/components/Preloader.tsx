@@ -8,11 +8,8 @@ export function Preloader() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (prefersReducedMotion()) {
-      setVisible(false);
-      return;
-    }
-    const timer = window.setTimeout(() => setVisible(false), 580);
+    const delay = prefersReducedMotion() ? 0 : 300;
+    const timer = window.setTimeout(() => setVisible(false), delay);
     return () => window.clearTimeout(timer);
   }, []);
 

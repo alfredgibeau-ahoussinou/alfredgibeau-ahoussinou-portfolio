@@ -21,6 +21,12 @@ const links = [
     external: true,
   },
   {
+    label: "LinkedIn",
+    value: "Alfred Gibeau Ahoussinou",
+    href: profile.linkedin,
+    external: true,
+  },
+  {
     label: "Localisation",
     value: profile.location,
     href: undefined,
@@ -35,7 +41,7 @@ export function ContactContent() {
         number="01"
         label="Contact"
         title="Travaillons ensemble"
-        subtitle="Un projet ambitieux, une collaboration ou une mission — écrivez-moi. Réponse sous 48 heures."
+        subtitle="Un projet ambitieux, une collaboration ou une mission : écrivez-moi. Réponse sous 48 heures."
       />
 
       <motion.ul
@@ -102,7 +108,7 @@ export function ContactContent() {
         className="mt-24 border-t border-border-subtle pt-20 sm:mt-32 sm:pt-24"
       >
         <p className="text-body max-w-md">
-          Pour une mission, un produit ou une intégration IA — décrivez votre
+          Pour une mission, un produit ou une intégration IA, décrivez votre
           vision, je reviens vers vous avec précision.
         </p>
         <Magnetic strength={0.08} className="mt-10 inline-block sm:mt-12">

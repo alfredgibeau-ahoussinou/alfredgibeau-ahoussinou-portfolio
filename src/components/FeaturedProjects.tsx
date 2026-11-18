@@ -17,7 +17,7 @@ export function FeaturedProjects() {
           number="02"
           label="Sélection"
           title="Projets en vedette"
-          subtitle="Six réalisations — ingénierie web, mobile et intelligence artificielle au service du produit."
+          subtitle="Six réalisations mêlant ingénierie web, mobile et intelligence artificielle au service du produit."
         />
 
         <div className="mt-24 sm:mt-32 lg:mt-40">

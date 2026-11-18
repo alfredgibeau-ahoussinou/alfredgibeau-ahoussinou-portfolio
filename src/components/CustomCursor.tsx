@@ -1,11 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { EASE_LUXURY } from "@/lib/motion";
 
+const subscribe = () => () => {};
+
 export function CustomCursor() {
-  const [enabled, setEnabled] = useState(false);
+  const enabled = useSyncExternalStore(
+    subscribe,
+    () =>
+      !window.matchMedia("(pointer: coarse)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    () => false,
+  );
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const x = useMotionValue(-100);
@@ -14,12 +22,7 @@ export function CustomCursor() {
   const springY = useSpring(y, { stiffness: 320, damping: 32, mass: 0.35 });
 
   useEffect(() => {
-    const coarse = window.matchMedia("(pointer: coarse)").matches;
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (coarse || reduced) return;
-    setEnabled(true);
+    if (!enabled) return;
 
     const move = (e: MouseEvent) => {
       x.set(e.clientX);

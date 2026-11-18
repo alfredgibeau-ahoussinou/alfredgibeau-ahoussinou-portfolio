@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProjectDetailContent } from "@/components/ProjectDetailContent";
+import { EditorialPortfolio } from "@/components/EditorialPortfolio";
 import { getProjectBySlug, projects } from "@/data/projects";
-import { getProjectImageUrl } from "@/lib/images";
 import { profile } from "@/data/profile";
 
 type Props = {
@@ -19,12 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: "Projet introuvable" };
 
   return {
-    title: `${project.title} — ${profile.name}`,
+    title: `${project.title} | ${profile.name}`,
     description: project.description,
     openGraph: {
       title: project.title,
       description: project.description,
-      images: [{ url: getProjectImageUrl(project) }],
+      images: [{ url: project.gallery[0] }],
     },
   };
 }
@@ -34,11 +33,5 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = getProjectBySlug(slug);
   if (!project) notFound();
 
-  const projectIndex = projects.findIndex((p) => p.slug === slug) + 1;
-
-  return (
-    <main>
-      <ProjectDetailContent project={project} projectIndex={projectIndex} />
-    </main>
-  );
+  return <EditorialPortfolio initialMode="case-study" initialSlug={slug} />;
 }

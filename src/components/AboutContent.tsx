@@ -63,7 +63,7 @@ export function AboutContent() {
         number="01"
         label="À propos"
         title="Qui je suis"
-        subtitle="Ingénieur full-stack & IA, basé à Paris. Des expériences digitales conçues avec rigueur et intention."
+        subtitle="Ingénieur full stack & IA, basé à Paris. Des expériences digitales conçues avec rigueur et intention."
       />
 
       <div className="mt-20 space-y-10 sm:mt-24 sm:space-y-12">

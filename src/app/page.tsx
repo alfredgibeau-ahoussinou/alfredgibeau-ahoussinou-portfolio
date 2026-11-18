@@ -1,13 +1,5 @@
-import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { Hero } from "@/components/Hero";
-import { HomeCTA } from "@/components/HomeCTA";
+import { EditorialPortfolio } from "@/components/EditorialPortfolio";
 
 export default function Home() {
-  return (
-    <main>
-      <Hero />
-      <FeaturedProjects />
-      <HomeCTA />
-    </main>
-  );
+  return <EditorialPortfolio initialMode="intro" />;
 }

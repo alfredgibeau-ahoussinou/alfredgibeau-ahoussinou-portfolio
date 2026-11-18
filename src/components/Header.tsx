@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLenis } from "lenis/react";
 import { profile } from "@/data/profile";
 import { EASE_LUXURY } from "@/lib/motion";
 import { Magnetic } from "./Magnetic";
@@ -20,30 +19,22 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const lenis = useLenis();
-
-  useLenis((instance) => {
-    setScrolled(instance.scroll > 32);
-  });
 
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 32);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
-    if (open) {
-      lenis?.stop();
-      document.body.style.overflow = "hidden";
-    } else {
-      lenis?.start();
-      document.body.style.overflow = "";
-    }
-
+    document.body.style.overflow = open ? "hidden" : "";
     return () => {
-      lenis?.start();
       document.body.style.overflow = "";
     };
-  }, [open, lenis]);
+  }, [open]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -68,7 +59,7 @@ export function Header() {
               {profile.name}
             </span>
             <span className="font-mono text-[0.5rem] uppercase tracking-[0.28em] text-muted/55">
-              Full-Stack & IA
+              Full Stack & IA
             </span>
           </Link>
         </Magnetic>
@@ -169,6 +160,7 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
+                      onClick={() => setOpen(false)}
                       className={`group flex items-baseline gap-5 transition-colors ${
                         isActive(link.href)
                           ? "text-foreground"
