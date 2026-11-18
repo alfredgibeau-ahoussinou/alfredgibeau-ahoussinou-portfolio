@@ -22,6 +22,7 @@ export type Project = {
   github: string;
   live: string;
   image: string;
+  video?: string;
   gallery: string[];
   theme: ProjectTheme;
   logoScale?: LogoScale;
@@ -58,6 +59,7 @@ export const projects: Project[] = [
     github: "https://github.com/alfredgibeau-ahoussinou/PRODAY-docs",
     live: "https://proday75.fr",
     image: "/projects/proday-lockup-transparent.png",
+    video: "/previews/proday-intro.mp4",
     gallery: [
       "/previews/proday-1.jpg",
       "/previews/proday-app-1.jpg",

@@ -820,14 +820,26 @@ export function EditorialPortfolio({
                             key={src}
                             className="relative h-full w-full shrink-0 overflow-hidden"
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={src}
-                              alt={`${project.title} aperçu ${sIdx + 1}`}
-                              className={`h-full w-full object-cover object-top transition-transform duration-700 ease-out ${
-                                !isCaseStudy && isActive ? "group-hover:scale-[1.02]" : ""
-                              }`}
-                            />
+                            {sIdx === 0 && isActive && isCaseStudy && project.video ? (
+                              <video
+                                src={project.video}
+                                poster={src}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="h-full w-full object-cover"
+                              />
+                            ) : (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img
+                                src={src}
+                                alt={`${project.title} aperçu ${sIdx + 1}`}
+                                className={`h-full w-full object-cover object-top transition-transform duration-700 ease-out ${
+                                  !isCaseStudy && isActive ? "group-hover:scale-[1.02]" : ""
+                                }`}
+                              />
+                            )}
                           </div>
                         ))}
                       </div>
