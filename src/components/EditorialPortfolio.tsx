@@ -382,7 +382,7 @@ export function EditorialPortfolio({
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative h-[100dvh] w-full overflow-hidden select-none transition-colors duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] [--card-gap:5vw] [--card-w:84vw] sm:[--card-gap:6vw] sm:[--card-w:min(56vw,860px)]"
+      className="relative h-[100dvh] w-full overflow-hidden select-none transition-colors duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] [--card-gap:5vw] [--card-w:84vw] sm:[--card-gap:6vw] sm:[--card-w:min(54vw,820px,calc((100dvh-280px)*16/9))]"
       style={{
         backgroundColor: aboutOpen ? "#111110" : theme.bg,
         color: aboutOpen ? "#E8E2D5" : theme.fg,
@@ -394,10 +394,10 @@ export function EditorialPortfolio({
         <button
           type="button"
           onClick={backToIntro}
-          className="pointer-events-auto fixed left-[24px] top-[24px] flex overflow-hidden text-left font-display text-[38px] leading-[0.88] tracking-[-0.02em] uppercase transition-opacity duration-300 hover:opacity-70 sm:left-[38px] sm:top-[35px] sm:text-[50px]"
+          className="pointer-events-auto fixed left-[24px] top-[24px] flex text-left font-display text-[38px] leading-[1.08] tracking-[-0.02em] uppercase transition-opacity duration-300 hover:opacity-70 sm:left-[38px] sm:top-[32px] sm:text-[50px]"
         >
           {"ALFRED".split("").map((ch, idx) => (
-            <span key={idx} className="inline-block overflow-hidden">
+            <span key={idx} className="inline-block overflow-hidden py-[2px]">
               <motion.span
                 initial={{ x: "-110%" }}
                 animate={{ x: "0%" }}
@@ -755,7 +755,11 @@ export function EditorialPortfolio({
             </AnimatePresence>
 
             {/* Persistent Horizontal Sliding Track (never unmounts between Carousel & Case Study) */}
-            <div className="relative z-10 flex h-full w-full items-center overflow-hidden">
+            <div
+              className={`relative z-10 flex h-full w-full items-center overflow-hidden transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                mode === "case-study" ? "xl:-translate-y-[44px]" : "translate-y-0"
+              }`}
+            >
               <motion.div
                 className="flex items-center will-change-transform"
                 animate={{
@@ -936,32 +940,32 @@ export function EditorialPortfolio({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 12 }}
                     transition={{ duration: 0.4, ease: EASE_ARISTIDE }}
-                    className="pointer-events-auto fixed bottom-[47px] left-1/2 z-30 hidden w-[760px] -translate-x-1/2 items-end justify-between gap-12 xl:flex"
+                    className="pointer-events-auto fixed bottom-[34px] left-1/2 z-30 hidden w-[min(820px,calc(100vw-340px))] -translate-x-1/2 items-end justify-between gap-10 xl:flex"
                   >
-                    <div className="grid gap-y-1 text-[10px] font-bold leading-[12px] tracking-[0.03em] uppercase">
+                    <div className="grid shrink-0 gap-y-1 text-[10px] font-bold leading-[12px] tracking-[0.03em] uppercase">
                       <MaskedLine direction="down" delay={0.05}>
-                        <div className="grid grid-cols-[26px_110px_220px] items-center">
+                        <div className="grid grid-cols-[22px_92px_180px] items-center">
                           <span className="text-[7px] opacity-60">A</span>
                           <span className="opacity-65">CRÉATION</span>
                           <span>{activeProject.year}</span>
                         </div>
                       </MaskedLine>
                       <MaskedLine direction="down" delay={0.09}>
-                        <div className="grid grid-cols-[26px_110px_220px] items-center">
+                        <div className="grid grid-cols-[22px_92px_180px] items-center">
                           <span className="text-[7px] opacity-60">B</span>
                           <span className="opacity-65">TYPE</span>
                           <span>{activeProject.category}</span>
                         </div>
                       </MaskedLine>
                       <MaskedLine direction="down" delay={0.13}>
-                        <div className="grid grid-cols-[26px_110px_220px] items-center">
+                        <div className="grid grid-cols-[22px_92px_180px] items-center">
                           <span className="text-[7px] opacity-60">C</span>
                           <span className="opacity-65">RÔLE</span>
                           <span>{activeProject.role}</span>
                         </div>
                       </MaskedLine>
                       <MaskedLine direction="down" delay={0.17}>
-                        <div className="grid grid-cols-[26px_110px_220px] items-center">
+                        <div className="grid grid-cols-[22px_92px_180px] items-center">
                           <span className="text-[7px] opacity-60">D</span>
                           <span className="opacity-65">SITE</span>
                           <a
@@ -976,16 +980,16 @@ export function EditorialPortfolio({
                       </MaskedLine>
                     </div>
 
-                    <div className="max-w-[380px] text-[10px] font-bold leading-[14px] tracking-[0.03em] uppercase">
+                    <div className="max-w-[440px] text-[9.5px] font-bold leading-[13px] tracking-[0.03em] uppercase">
                       <MaskedLine direction="down" delay={0.1}>
                         <p>{activeProject.description}</p>
                       </MaskedLine>
                       <MaskedLine direction="down" delay={0.15}>
-                        <div className="mt-2.5 flex flex-wrap gap-1.5">
+                        <div className="mt-2 flex flex-wrap gap-1">
                           {activeProject.tech.map((t) => (
                             <span
                               key={t}
-                              className="border px-1.5 py-0.5 text-[8.5px] tracking-[0.06em] opacity-75"
+                              className="border px-1.5 py-0.5 text-[8px] tracking-[0.05em] opacity-75"
                               style={{ borderColor: theme.fg }}
                             >
                               {t}
